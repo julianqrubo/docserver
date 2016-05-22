@@ -18,7 +18,6 @@ if ($row) {
         $files = array_diff(scandir($path), array('..', '.'));
         if (count($files)) {
             ?>
-
             <h3 style="text-align: center;">Archivos disponibles</h3>
 
             <ul class="files mdl-list">
