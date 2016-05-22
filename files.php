@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 if (!isset($_SESSION["__user__"])) {
     header('Location: index.php');
     exit;
