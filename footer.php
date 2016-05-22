@@ -1,8 +1,3 @@
-
-<div id="status-snackbar" class="mdl-js-snackbar mdl-snackbar">
-    <div class="mdl-snackbar__text"></div>
-    <button class="mdl-snackbar__action" type="button"></button>
-</div>
 <dialog class="mdl-dialog" id="change-pwd-dialog">
     <div class="mdl-dialog__content">
         <div style="text-align: center;">
@@ -30,6 +25,7 @@
 </dialog>
 </div>
 </main>
+
 <footer class="mdl-mini-footer">
     <div class="mdl-mini-footer__left-section">
         <ul class="mdl-mini-footer__link-list">
@@ -39,6 +35,11 @@
         </ul>
     </div>
 </footer>
+
+<div id="status-snackbar" class="mdl-js-snackbar mdl-snackbar">
+    <div class="mdl-snackbar__text"></div>
+    <button class="mdl-snackbar__action" type="button"></button>
+</div>
 
 </div>
 <script src="js/material<?php echo $mode; ?>.js"></script>
