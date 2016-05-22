@@ -4,3 +4,8 @@
     margin-right: auto;
     margin-top: 15%;
 }
+
+.mdl-list__item:hover{
+    background-color: #aaa;
+    color: #424242!important;
+}

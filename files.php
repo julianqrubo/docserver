@@ -14,9 +14,16 @@ $files = array_diff(scandir($dir), array('..', '.'));
         ?>
         <li class="mdl-list__item">
             <span class="mdl-list__item-primary-content">
-                <i class="material-icons mdl-list__item-icon">person</i>
-                <?php echo $file; ?>
+                <i class="material-icons">attach_file</i>
+                <a href="#" id="download_text"><?php echo $file; ?></a>
             </span>
+            <a href="#" id="download_icon"><i class="material-icons">cloud_download</i></a>
+            <div class="mdl-tooltip" for="download_icon">
+                Descargar el archivo
+            </div>
+            <div class="mdl-tooltip" for="download_text">
+                Descargar el archivo
+            </div>
         </li>
         <?php
     }
