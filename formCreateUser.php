@@ -1,11 +1,11 @@
 <?php
-    session_start();
-    if (!isset($_SESSION["__user__"])) {
-        header('Location: index.php');
-        exit;
-    }
-    include './header.php';
-    include './db.php';
+session_start();
+if (!isset($_SESSION["__user__"])) {
+    header('Location: index.php');
+    exit;
+}
+include './header.php';
+include './db.php';
 ?>
 
 <h3 style="text-align: center;">Registro de usuario</h3>
@@ -20,7 +20,7 @@
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input class="mdl-textfield__input" type="text" id="name" name="name" pattern="[a-z\s]*$" maxlength="30">
-                <label class="mdl-textfield__label" for="name">Nombres</label>
+                <label class="mdl-textfield__label" for="name">Nombre de la persona</label>
                 <span class="mdl-textfield__error">Solo letras minúsculas</span>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -62,5 +62,5 @@
 </div>
 
 <?php
-    include './footer.php';
+include './footer.php';
 ?>

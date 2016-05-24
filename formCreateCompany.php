@@ -1,11 +1,11 @@
 <?php
-    session_start();
-    if (!isset($_SESSION["__user__"])) {
-        header('Location: index.php');
-        exit;
-    }
-    include './header.php';
-    include './db.php';
+session_start();
+if (!isset($_SESSION["__user__"])) {
+    header('Location: index.php');
+    exit;
+}
+include './header.php';
+include './db.php';
 ?>
 
 <h3 style="text-align: center;">Registro de empresa</h3>
@@ -15,22 +15,22 @@
         <form action="createCompany.php" id="createCompany-form">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input class="mdl-textfield__input" type="text" id="documentId" name="documentId" pattern="^\d*$" maxlength="10">
-                <label class="mdl-textfield__label" for="companyId">Número de documento</label>
+                <label class="mdl-textfield__label" for="companyId">NIT de la empresa</label>
                 <span class="mdl-textfield__error">Solo números</span>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="text" id="name" name="name" pattern="[a-z\s]*$" maxlength="30">
-                <label class="mdl-textfield__label" for="name">Nombre</label>
+                <input class="mdl-textfield__input" type="text" id="name" name="name" pattern="[a-z\.s]+" maxlength="30">
+                <label class="mdl-textfield__label" for="name">Nombre de le empresa</label>
                 <span class="mdl-textfield__error">Solo letras minúsculas</span>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input class="mdl-textfield__input" type="text" id="address" name="address" pattern="[a-z1-9\s]*$" maxlength="30">
-                <label class="mdl-textfield__label" for="address">Dirección</label>
+                <label class="mdl-textfield__label" for="address">Dirección de empresa</label>
                 <span class="mdl-textfield__error">Solo letras minúsculas y números</span>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input class="mdl-textfield__input" type="text" id="phone" name="phone" pattern="^\d*$" maxlength="15">
-                <label class="mdl-textfield__label" for="phone">Teléfono</label>
+                <label class="mdl-textfield__label" for="phone">Teléfono de empresa</label>
                 <span class="mdl-textfield__error">Solo números</span>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -48,5 +48,5 @@
 </div>
 
 <?php
-    include './footer.php';
+include './footer.php';
 ?>

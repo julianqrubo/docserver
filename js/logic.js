@@ -135,15 +135,16 @@ $(function () {
     });
     
     $('#insert-comapny-button').on("click", function (e) {
+        e.stopPropagation();
+        e.preventDefault();
         var $frm = $("#createCompany-form");
         $.post($frm.attr("action"), $frm.serialize(), function (response) {
-            console.log(arguments);
-            location.href = location.href.replace("formCreateCompany.php", "createCompany.php")
+            location.href = location.href.replace("formCreateCompany.php", "companies.php")
         }).fail(function (error) {
             console.log(error);
             var snackbarContainer = document.querySelector('#status-snackbar');
             var data = {
-                message: error.responseText,
+                message: error.responseText || error.statusText,
                 timeout: 2000,
                 actionText: 'Ok'
             };
@@ -152,15 +153,16 @@ $(function () {
     });
     
     $('#insert-user-button').on("click", function (e) {
+        e.stopPropagation();
+        e.preventDefault();
         var $frm = $("#createUser-form");
         $.post($frm.attr("action"), $frm.serialize(), function (response) {
-            console.log(arguments);
-            location.href = location.href.replace("formCreateUser.php", "createUser.php")
+            location.href = location.href.replace("formCreateUser.php", "users.php")
         }).fail(function (error) {
             console.log(error);
             var snackbarContainer = document.querySelector('#status-snackbar');
             var data = {
-                message: error.responseText,
+                message: error.responseText || error.statusText,
                 timeout: 2000,
                 actionText: 'Ok'
             };
