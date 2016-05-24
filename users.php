@@ -56,7 +56,7 @@
                         <td class="mdl-data-table__cell--non-numeric"><?php echo $row["userName"]; ?></td>
                         <td class="mdl-data-table__cell--non-numeric"><?php echo $row["email"]; ?></td>
                         <td class="mdl-data-table__cell--non-numeric"><?php echo $row["phone"]; ?></td>
-                        <td class="mdl-data-table__cell--non-numeric"><?php echo $row["isAdmin"]; ?></td>
+                        <td class="mdl-data-table__cell--non-numeric"><?php echo $row["isAdmin"] == 1 ? '<i class="material-icons">done</i>' : '<i class="material-icons">clear</i>'; ?></td>
                     </tr>
                 <?php } ?>
             </tbody>
