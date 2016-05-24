@@ -125,12 +125,44 @@ $(function () {
     });
     
     $('#create-users-button').on("click", function (e) {
-        console.log("Llamando al formulario de crear usuario");
-        location.href = location.href.replace("users.php", "createUser.php")
+        location.href = location.href.replace("users.php", "formCreateUser.php")
     });
     
     $('#create-companies-button').on("click", function (e) {
-        console.log("Llamando al formulario de crear empresa");
-        location.href = location.href.replace("companies.php", "createCompany.php")
+        location.href = location.href.replace("companies.php", "formCreateCompany.php")
+    });
+    
+    $('#insert-comapny-button').on("click", function (e) {
+        var $frm = $("#createCompany-form");
+        $.post($frm.attr("action"), $frm.serialize(), function (response) {
+            console.log(arguments);
+            location.href = location.href.replace("formCreateCompany.php", "createCompany.php")
+        }).fail(function (error) {
+            console.log(error);
+            var snackbarContainer = document.querySelector('#status-snackbar');
+            var data = {
+                message: error.responseText,
+                timeout: 2000,
+                actionText: 'Ok'
+            };
+            snackbarContainer.MaterialSnackbar.showSnackbar(data);
+        });
+    });
+    
+    $('#insert-user-button').on("click", function (e) {
+        var $frm = $("#createUser-form");
+        $.post($frm.attr("action"), $frm.serialize(), function (response) {
+            console.log(arguments);
+            location.href = location.href.replace("formCreateUser.php", "createUser.php")
+        }).fail(function (error) {
+            console.log(error);
+            var snackbarContainer = document.querySelector('#status-snackbar');
+            var data = {
+                message: error.responseText,
+                timeout: 2000,
+                actionText: 'Ok'
+            };
+            snackbarContainer.MaterialSnackbar.showSnackbar(data);
+        });
     });
 });
