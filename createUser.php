@@ -2,6 +2,7 @@
 
 session_start();
 include './db.php';
+include './errors.php';
 
 $companyId = Null;
 $name = "";

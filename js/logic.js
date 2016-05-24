@@ -25,7 +25,7 @@ $(function () {
         var checkedIds = [];
         for (var i = 0, length = boxes.length; i < length; i++) {
             if (boxes[i].checked) {
-                checkedIds.push(boxes[i].id.replace("#" + concept + "_row_", ""));
+                checkedIds.push(boxes[i].id.replace(concept + "_row_", ""));
             }
         }
         return checkedIds;

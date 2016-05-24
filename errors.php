@@ -1,9 +1,10 @@
 <?php
 
+$errors = array(23000=>"Ya existe un registro y no se permiten valores repetidos");
 function get_error ($error, $msg){
-    $errors = array(23000=>"Ya existe un registro y no se permiten valores repetidos");
-    if(isset($errors[$error])){
-        return $errors[$error];
+    global $errors;
+    if(isset($GLOBALS['errors'][$error])){
+        return $GLOBALS['errors'][$error];
     }
     return $msg;
 }
