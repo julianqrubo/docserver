@@ -6,7 +6,6 @@
     }
     include './header.php';
     include './db.php';
-    console.log("Voy a ejeutar el query");
     $stmt = $db->prepare("SELECT ID, companyId, name, lastName, userName, pwd, email, phone, isAdmin FROM users");
     $stmt->execute();
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
