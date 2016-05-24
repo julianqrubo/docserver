@@ -48,6 +48,6 @@ try {
     }
 } catch (Exception $ex) {
     http_response_code(500);
-    echo $ex->getMessage();
+    echo get_error($ex->getCode(), $ex->getMessage());
 }
 ?>
