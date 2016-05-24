@@ -1,15 +1,15 @@
 <?php
-session_start();
-if (!isset($_SESSION["__user__"])) {
-    header('Location: index.php');
-    exit;
-}
-include './header.php';
-include './db.php';
-$stmt = $db->prepare("SELECT ID, documentId, name, address, phone FROM company");
-$stmt->execute();
-$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$row_cunter = $stmt->rowCount();
+    session_start();
+    if (!isset($_SESSION["__user__"])) {
+        header('Location: index.php');
+        exit;
+    }
+    include './header.php';
+    include './db.php';
+    $stmt = $db->prepare("SELECT ID, documentId, name, address, phone FROM company");
+    $stmt->execute();
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $row_cunter = $stmt->rowCount();
 ?>
 <h3 style="text-align: center;">Empresas</h3>
 
@@ -73,7 +73,6 @@ $row_cunter = $stmt->rowCount();
         <button type="button" class="mdl-button close-button">Cancelar</button>
     </div>
 </dialog>
-
 
 <?php
 include './footer.php';

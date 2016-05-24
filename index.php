@@ -9,7 +9,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="description" content="Software para la descarga de historias cl&iacute;nicas.">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-        <title>Software de historias cl&iacute;nicas <?php echo $_SERVER["REQUEST_URI"] ?></title>
+        <title>Repositorio de archivos <?php echo $_SERVER["REQUEST_URI"] ?></title>
 
         <!-- Add to homescreen for Chrome on Android -->
         <meta name="mobile-web-app-capable" content="yes">

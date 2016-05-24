@@ -1,21 +1,23 @@
 $(function () {
     var setup_data_table = function (concept, on_ok) {
         var table = document.querySelector("#" + concept + "-data-table");
-        setup_dialog(concept, on_ok);
-        var headerCheckbox = table.querySelector('thead .mdl-data-table__select input');
-        var boxes = table.querySelectorAll('tbody .mdl-data-table__select');
-        var headerCheckHandler = function (event) {
-            if (event.target.checked) {
-                for (var i = 0, length = boxes.length; i < length; i++) {
-                    boxes[i].MaterialCheckbox.check();
+        if(table){
+            setup_dialog(concept, on_ok);
+            var headerCheckbox = table.querySelector('thead .mdl-data-table__select input');
+            var boxes = table.querySelectorAll('tbody .mdl-data-table__select');
+            var headerCheckHandler = function (event) {
+                if (event.target.checked) {
+                    for (var i = 0, length = boxes.length; i < length; i++) {
+                        boxes[i].MaterialCheckbox.check();
+                    }
+                } else {
+                    for (var i = 0, length = boxes.length; i < length; i++) {
+                        boxes[i].MaterialCheckbox.uncheck();
+                    }
                 }
-            } else {
-                for (var i = 0, length = boxes.length; i < length; i++) {
-                    boxes[i].MaterialCheckbox.uncheck();
-                }
-            }
-        };
-        headerCheckbox.addEventListener('change', headerCheckHandler);
+            };
+            headerCheckbox.addEventListener('change', headerCheckHandler);
+        }
     };
     var get_selected_rows = function (concept) {
         var table = document.querySelector("#" + concept + "-data-table");
@@ -23,14 +25,14 @@ $(function () {
         var checkedIds = [];
         for (var i = 0, length = boxes.length; i < length; i++) {
             if (boxes[i].checked) {
-                checkedIds.push(boxes[i].id.replace("companies_row_", ""));
+                checkedIds.push(boxes[i].id.replace("#" + concept + "_row_", ""));
             }
         }
         return checkedIds;
     };
     var setup_dialog = function (concept, on_ok) {
-        var showButton = document.querySelector('#' + "delete-" + concept + "-button");
-        var dialog = document.querySelector('#' + "delete-" + concept + "-dialog");
+        var showButton = document.querySelector("#" + "delete-" + concept + "-button");
+        var dialog = document.querySelector("#" + "delete-" + concept + "-dialog");
         var closeButton = dialog.querySelector('.close-button');
         var okButton = dialog.querySelector('.ok-button');
         showButton.addEventListener('click', function () {
@@ -120,5 +122,15 @@ $(function () {
             };
             snackbarContainer.MaterialSnackbar.showSnackbar(data);
         });
+    });
+    
+    $('#create-users-button').on("click", function (e) {
+        console.log("Llamando al formulario de crear usuario");
+        location.href = location.href.replace("users.php", "createUser.php")
+    });
+    
+    $('#create-companies-button').on("click", function (e) {
+        console.log("Llamando al formulario de crear empresa");
+        location.href = location.href.replace("companies.php", "createCompany.php")
     });
 });

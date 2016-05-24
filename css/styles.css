@@ -8,3 +8,7 @@
     background-color: #aaa;
     color: #424242!important;
 }
+
+.demo-list-item {
+  width: 300px;
+}
