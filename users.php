@@ -6,7 +6,6 @@
     }
     include './header.php';
     include './db.php';
-    console.log("Voy a ejeutar el query");
     $stmt = $db->prepare("SELECT ID, companyId, name, lastName, userName, pwd, email, phone, isAdmin FROM users");
     $stmt->execute();
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -57,7 +56,7 @@
                         <td class="mdl-data-table__cell--non-numeric"><?php echo $row["userName"]; ?></td>
                         <td class="mdl-data-table__cell--non-numeric"><?php echo $row["email"]; ?></td>
                         <td class="mdl-data-table__cell--non-numeric"><?php echo $row["phone"]; ?></td>
-                        <td class="mdl-data-table__cell--non-numeric"><?php echo $row["isAdmin"]; ?></td>
+                        <td class="mdl-data-table__cell--non-numeric"><?php echo $row["isAdmin"] == 1 ? '<i class="material-icons">done</i>' : '<i class="material-icons">clear</i>'; ?></td>
                     </tr>
                 <?php } ?>
             </tbody>

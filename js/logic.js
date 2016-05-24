@@ -1,7 +1,7 @@
 $(function () {
     var setup_data_table = function (concept, on_ok) {
         var table = document.querySelector("#" + concept + "-data-table");
-        if(table){
+        if (table) {
             setup_dialog(concept, on_ok);
             var headerCheckbox = table.querySelector('thead .mdl-data-table__select input');
             var boxes = table.querySelectorAll('tbody .mdl-data-table__select');
@@ -76,40 +76,42 @@ $(function () {
     });
     //Change password dialog
     var dialog = document.querySelector('#change-pwd-dialog');
-    var closeButton = dialog.querySelector('#close-button');
-    var changePwdButton = dialog.querySelector('#change-pwd-button');
-    var showButton = document.querySelector('#change-pwd');
-    if (!dialog.showModal) {
-        dialogPolyfill.registerDialog(dialog);
-    }
-    showButton.addEventListener('click', function (event) {
-        dialog.showModal();
-    });
-    closeButton.addEventListener('click', function (event) {
-        dialog.close();
-    });
-    changePwdButton.addEventListener('click', function (event) {
-        var $frm = $("#changepwd-form");
-        $.post($frm.attr("action"), $frm.serialize(), function () {
-            $frm[0].reset();
-            dialog.close();
-            var snackbarContainer = document.querySelector('#status-snackbar');
-            var data = {
-                message: "La contaraseña se ha cambiado de forma exitosa.",
-                timeout: 4000,
-                actionText: 'Ok'
-            };
-            snackbarContainer.MaterialSnackbar.showSnackbar(data);
-        }).fail(function (error) {
-            var snackbarContainer = document.querySelector('#status-snackbar');
-            var data = {
-                message: error.responseText,
-                timeout: 4000,
-                actionText: 'Ok'
-            };
-            snackbarContainer.MaterialSnackbar.showSnackbar(data);
+    if (dialog) {
+        var closeButton = dialog.querySelector('#close-button');
+        var changePwdButton = dialog.querySelector('#change-pwd-button');
+        var showButton = document.querySelector('#change-pwd');
+        if (!dialog.showModal) {
+            dialogPolyfill.registerDialog(dialog);
+        }
+        showButton.addEventListener('click', function (event) {
+            dialog.showModal();
         });
-    });
+        closeButton.addEventListener('click', function (event) {
+            dialog.close();
+        });
+        changePwdButton.addEventListener('click', function (event) {
+            var $frm = $("#changepwd-form");
+            $.post($frm.attr("action"), $frm.serialize(), function () {
+                $frm[0].reset();
+                dialog.close();
+                var snackbarContainer = document.querySelector('#status-snackbar');
+                var data = {
+                    message: "La contaraseña se ha cambiado de forma exitosa.",
+                    timeout: 4000,
+                    actionText: 'Ok'
+                };
+                snackbarContainer.MaterialSnackbar.showSnackbar(data);
+            }).fail(function (error) {
+                var snackbarContainer = document.querySelector('#status-snackbar');
+                var data = {
+                    message: error.responseText,
+                    timeout: 4000,
+                    actionText: 'Ok'
+                };
+                snackbarContainer.MaterialSnackbar.showSnackbar(data);
+            });
+        });
+    }
     setup_data_table("companies", function (sels, action) {
         $.post(action, {ids: sels.join(',')}, function () {
             location.reload();
@@ -123,11 +125,11 @@ $(function () {
             snackbarContainer.MaterialSnackbar.showSnackbar(data);
         });
     });
-    
+
     $('#create-users-button').on("click", function (e) {
         location.href = location.href.replace("users.php", "formCreateUser.php")
     });
-    
+
     $('#create-companies-button').on("click", function (e) {
         location.href = location.href.replace("companies.php", "formCreateCompany.php")
     });
