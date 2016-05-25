@@ -86,8 +86,8 @@ foreach ($rows_cbox as $id) {
                 <?php echo $cboxCompany; ?>
             </select>
         </div>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
-            <input class="mdl-textfield__input" type="text" id="name" name="name" pattern="[a-z\s]*$" maxlength="30">
+        <div class="mdl-textfield mdl-js-textfield" style="width: 100%">
+            <input class="mdl-textfield__input" type="text" id="name" pattern="[a-z\s]*$" maxlength="30">
             <label class="mdl-textfield__label" for="name">Nombre de la persona</label>
             <span class="mdl-textfield__error">Solo letras minúsculas</span>
         </div>

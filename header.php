@@ -15,9 +15,9 @@ $fullname = $name . " " . $lastname;
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="description" content="Software para la descarga de historias cl&iacute;nicas.">
+        <meta name="description" content="Repositorio de archivos">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-        <title>Software de historias cl&iacute;nicas <?php echo $_SERVER["REQUEST_URI"] ?></title>
+        <title>Repositorio de archivos<?php echo $_SERVER["REQUEST_URI"] ?></title>
 
         <!-- Add to homescreen for Chrome on Android -->
         <meta name="mobile-web-app-capable" content="yes">
@@ -51,18 +51,19 @@ $fullname = $name . " " . $lastname;
                     <div class="mdl-layout-spacer"></div>
                     <!-- Navigation. We hide it in small screens. -->
                     <nav class="mdl-navigation mdl-layout--large-screen-only">
-                        <a class="mdl-navigation__link" href="#" id="change-pwd">Cambiar contrase&ntilde;a</a>
-                        <a class="mdl-navigation__link" href="logout.php">Cerrar sesi&oacute;n</a>
+                        <a class="mdl-navigation__link" href="#" id="change-pwd">Cambiar contraseña</a>
+                        <a class="mdl-navigation__link" href="logout.php">Cerrar sesión</a>
                     </nav>
                 </div>
             </header>
             <div class="mdl-layout__drawer">
                 <span class="mdl-layout-title"><?php echo $fullname; ?></span>
                 <nav class="mdl-navigation">
-                    <?php if ($isadmin) { ?>
+                    <?php if ($isadmin == 1) { ?>
                         <a class="mdl-navigation__link" href="companies.php">Empresas</a>
                         <a class="mdl-navigation__link" href="users.php">Usuarios</a>
                         <a class="mdl-navigation__link" href="admfiles.php">Archivos</a>
+                        <a class="mdl-navigation__link" href="formUploadFiles.php">Cargue de archivos</a>
                     <?php } else { ?>
                         <a class="mdl-navigation__link" href="files.php">Archivos</a>
                     <?php } ?>

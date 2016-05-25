@@ -37,7 +37,7 @@
 
         <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: auto; margin-right: auto; margin-top: 20%;">
             <div class="mdl-card__title">
-                <h2 class="mdl-card__title-text">Inicio de sesi&oacute;n</h2>
+                <h2 class="mdl-card__title-text">Inicio de sesión</h2>
             </div>
 
             <div style="text-align: center;">
@@ -49,12 +49,12 @@
                     </div>
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input class="mdl-textfield__input" type="password" id="password" name="password">
-                        <label class="mdl-textfield__label" for="password">Contrase&ntilde;a</label>
+                        <label class="mdl-textfield__label" for="password">Contraseña</label>
                     </div>
                 </form>
                 <div class="mdl-card__actions mdl-card--border">
                     <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="sigin">
-                        Iniciar sesi&oacute;n
+                        Iniciar sesión
                     </a>
                 </div>
             </div>
