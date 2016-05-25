@@ -35,10 +35,26 @@ $(function () {
         var dialog = document.querySelector("#" + "delete-" + concept + "-dialog");
         var closeButton = dialog.querySelector('.close-button');
         var okButton = dialog.querySelector('.ok-button');
+        var changeStatusButton = document.querySelector("#" + "changeStatus-" + concept + "-button");
+        var dialogChangeStatus = document.querySelector("#" + "changeStatus-" + concept + "-dialog");
         showButton.addEventListener('click', function () {
             if (get_selected_rows(concept).length > 0) {
                 dialog.querySelector(".mdl-progress").style.display = "none";
                 dialog.showModal();
+            } else {
+                var snackbarContainer = document.querySelector('#status-snackbar');
+                var data = {
+                    message: "Debe seleccionar al menos un registro",
+                    timeout: 4000,
+                    actionText: 'Ok'
+                };
+                snackbarContainer.MaterialSnackbar.showSnackbar(data);
+            }
+        });
+        changeStatusButton.addEventListener('click', function () {
+            if (get_selected_rows(concept).length > 0) {
+                dialogChangeStatus.querySelector(".mdl-progress").style.display = "none";
+                dialogChangeStatus.showModal();
             } else {
                 var snackbarContainer = document.querySelector('#status-snackbar');
                 var data = {

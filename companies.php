@@ -6,17 +6,20 @@
     }
     include './header.php';
     include './db.php';
-    $stmt = $db->prepare("SELECT ID, documentId, name, address, phone FROM company");
+    $stmt = $db->prepare("SELECT ID, documentId, name, address, phone, path, state FROM company");
     $stmt->execute();
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $row_cunter = $stmt->rowCount();
 ?>
 <h3 style="text-align: center;">Empresas</h3>
 
-<div style="width: 600px; margin: auto;">
+<div style="width: 730px; margin: auto;">
     <div style="text-align: right; padding-bottom: 20px;">
         <button id="create-companies-button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
             Crear
+        </button>
+         <button id="changeStatus-companies-button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+            Cambiar estado
         </button>
         <button id="delete-companies-button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
             Eliminar
@@ -33,8 +36,10 @@
                 </th>
                 <th>Nit</th>
                 <th class="mdl-data-table__cell--non-numeric">Nombre</th>
-                <th class="mdl-data-table__cell--non-numeric">Direcci&oacute;n</th>
-                <th>Tel&eacute;fono</th>
+                <th class="mdl-data-table__cell--non-numeric">Dirección</th>
+                <th class="mdl-data-table__cell--non-numeric">Teléfono</th>
+                <th class="mdl-data-table__cell--non-numeric">Directorio</th>
+                <th class="mdl-data-table__cell--non-numeric">Estado</th>
             </tr>
         </thead>
         <tbody>
@@ -50,7 +55,9 @@
                     <td><?php echo $row["documentId"]; ?></td>
                     <td class="mdl-data-table__cell--non-numeric"><?php echo $row["name"]; ?></td>
                     <td class="mdl-data-table__cell--non-numeric"><?php echo $row["address"]; ?></td>
-                    <td><?php echo $row["phone"]; ?></td>
+                    <td class="mdl-data-table__cell--non-numeric"><?php echo $row["phone"]; ?></td>
+                    <td class="mdl-data-table__cell--non-numeric"><?php echo $row["path"]; ?></td>
+                    <td class="mdl-data-table__cell--non-numeric"><?php echo $row["state"]; ?></td>
                 </tr>
             <?php } ?>
         </tbody>
@@ -70,6 +77,22 @@
 
     <div class="mdl-dialog__actions">
         <button type="button" class="mdl-button ok-button" >Eliminar</button>
+        <button type="button" class="mdl-button close-button">Cancelar</button>
+    </div>
+</dialog>
+
+<dialog id="changeStatus-companies-dialog" class="mdl-dialog" action="changeStatus.php">
+    <h3 class="mdl-dialog__title">Cambiar Estado</h3>
+    <div class="mdl-dialog__content">
+        <p>
+            Realmente desea cambiar el estado a los empresas seleccionadas?
+        </p>
+    </div>
+    
+    <div class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="display: none;"></div>
+
+    <div class="mdl-dialog__actions">
+        <button type="button" class="mdl-button ok-button" >Aceptar</button>
         <button type="button" class="mdl-button close-button">Cancelar</button>
     </div>
 </dialog>
