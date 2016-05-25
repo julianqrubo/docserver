@@ -6,7 +6,7 @@
     }
     include './header.php';
     include './db.php';
-    $stmt = $db->prepare("SELECT ID, documentId, name, address, phone, path, state FROM company");
+    $stmt = $db->prepare("SELECT ID, documentId, name, address, phone, path, state FROM company order by state asc, name asc, documentId asc");
     $stmt->execute();
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $row_cunter = $stmt->rowCount();
@@ -65,7 +65,7 @@
     <div style="padding: 10px; text-align: center; color: #444;"><?php echo $row_cunter; ?> registros encontrados</div>
 </div>
 
-<dialog id="delete-companies-dialog" class="mdl-dialog" action="delete_companies.php">
+<dialog id="delete-companies-dialog" class="mdl-dialog" action="delete_companies.php" style="width: 500px;">
     <h3 class="mdl-dialog__title">Eliminar</h3>
     <div class="mdl-dialog__content">
         <p>
@@ -76,12 +76,12 @@
     <div class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="display: none;"></div>
 
     <div class="mdl-dialog__actions">
-        <button type="button" class="mdl-button ok-button" >Eliminar</button>
-        <button type="button" class="mdl-button close-button">Cancelar</button>
+        <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent close-button">Cancelar</button>
+        <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect ok-button" >Eliminar</button>
     </div>
 </dialog>
 
-<dialog id="changeStatus-companies-dialog" class="mdl-dialog" action="changeStatus.php">
+<dialog id="changeStatus-companies-dialog" class="mdl-dialog" action="changeStatus.php" style="width: 500px;">
     <h3 class="mdl-dialog__title">Cambiar Estado</h3>
     <div class="mdl-dialog__content">
         <p>
@@ -92,8 +92,8 @@
     <div class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="display: none;"></div>
 
     <div class="mdl-dialog__actions">
-        <button type="button" class="mdl-button okChangeStatus-button">Aceptar</button>
-        <button type="button" class="mdl-button closeChangeStatus-button">Cancelar</button>
+        <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent closeChangeStatus-button">Cancelar</button>
+        <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect okChangeStatus-button">Aceptar</button>
     </div>
 </dialog>
 
@@ -106,7 +106,7 @@
             <span class="mdl-textfield__error">Solo números</span>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
-            <input class="mdl-textfield__input" type="text" id="name" name="name" pattern="[a-z\.s]+" maxlength="30">
+            <input class="mdl-textfield__input" type="text" id="name" name="name" pattern="[a-z\s]*$" maxlength="30">
             <label class="mdl-textfield__label" for="name">Nombre de la empresa</label>
             <span class="mdl-textfield__error">Solo letras minúsculas</span>
         </div>
@@ -126,8 +126,8 @@
             <span class="mdl-textfield__error">Solo letras minúsculas</span>
         </div>
         <div>
-            <button type="button" class="mdl-button okCreate-button">Crear</button>
-            <button type="button" class="mdl-button closeCreate-button">Cancelar</button>
+            <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect okCreate-button">Crear</button>
+            <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent closeCreate-button">Cancelar</button>
         </div>
     </form>
 </dialog>

@@ -3,7 +3,9 @@ $(function () {
         var table = document.querySelector("#" + concept + "-data-table");
         if (table) {
             setup_delete_dialog(concept, on_ok);
-            setup_change_dialog(concept, on_ok);
+            if(concept == "companies"){
+                setup_change_dialog(concept, on_ok);
+            }
             setup_create_dialog(concept, on_okCreate);
             var headerCheckbox = table.querySelector('thead .mdl-data-table__select input');
             var boxes = table.querySelectorAll('tbody .mdl-data-table__select');
@@ -21,6 +23,7 @@ $(function () {
             headerCheckbox.addEventListener('change', headerCheckHandler);
         }
     };
+
     var get_selected_rows = function (concept) {
         var table = document.querySelector("#" + concept + "-data-table");
         var boxes = table.querySelectorAll('tbody .mdl-checkbox__input');
@@ -103,6 +106,7 @@ $(function () {
             on_ok(get_selected_rows(concept), dialogChangeStatus.getAttribute("action"));
         });
     };
+
     //onload
     $('#sigin').on("click", function (e) {
         var $frm = $("#sigin-form");
@@ -120,6 +124,7 @@ $(function () {
             snackbarContainer.MaterialSnackbar.showSnackbar(data);
         });
     });
+
     //Change password dialog
     var dialog = document.querySelector('#change-pwd-dialog');
     if (dialog) {
@@ -158,7 +163,23 @@ $(function () {
             });
         });
     }
-    setup_data_table("companies", function (sels, action) {
+
+    // Validar el tipo de concepto
+    var conceptType = "";
+    var createCompanyDialog = document.querySelector('#create-companies-dialog');
+    var deleteCompanyDialog = document.querySelector('#delete-companies-dialog');
+    var changeStatusCompanyDialog = document.querySelector('#changeStatus-companies-dialog');
+    var createUserDialog = document.querySelector('#create-users-dialog');
+    var deleteUserDialog = document.querySelector('#delete-users-dialog');
+
+    if (createCompanyDialog || deleteCompanyDialog || changeStatusCompanyDialog) {
+        conceptType = "companies";
+    }
+    
+    if(createUserDialog || deleteUserDialog){
+        conceptType = "users";
+    }
+    setup_data_table(conceptType, function (sels, action) {
         $.post(action, {ids: sels.join(',')}, function () {
             location.reload();
         }).fail(function (error) {
@@ -173,41 +194,6 @@ $(function () {
     }, function (form, action) {
         $.post(action, $(form).serialize(), function (response) {
             location.reload();
-        })
-    });
-
-    $('#create-users-button').on("click", function (e) {
-        location.href = location.href.replace("users.php", "formCreateUser.php");
-    });
-
-    /*$('#create-companies-button').on("click", function (e) {
-     location.href = location.href.replace("companies.php", "formCreateCompany.php")
-     });*/
-
-    $('#insert-comapny-button').on("click", function (e) {
-        e.stopPropagation();
-        e.preventDefault();
-        var $frm = $("#createCompany-form");
-        $.post($frm.attr("action"), $frm.serialize(), function (response) {
-            location.href = location.href.replace("formCreateCompany.php", "companies.php");
-        }).fail(function (error) {
-            console.log(error);
-            var snackbarContainer = document.querySelector('#status-snackbar');
-            var data = {
-                message: error.responseText || error.statusText,
-                timeout: 2000,
-                actionText: 'Ok'
-            };
-            snackbarContainer.MaterialSnackbar.showSnackbar(data);
-        });
-    });
-
-    $('#insert-user-button').on("click", function (e) {
-        e.stopPropagation();
-        e.preventDefault();
-        var $frm = $("#createUser-form");
-        $.post($frm.attr("action"), $frm.serialize(), function (response) {
-            location.href = location.href.replace("formCreateUser.php", "users.php");
         }).fail(function (error) {
             console.log(error);
             var snackbarContainer = document.querySelector('#status-snackbar');

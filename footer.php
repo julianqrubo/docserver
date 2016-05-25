@@ -1,32 +1,32 @@
-<dialog class="mdl-dialog" id="change-pwd-dialog">
+<dialog class="mdl-dialog" id="change-pwd-dialog" style="width: 500px">
     <div class="mdl-dialog__content">
         <div style="text-align: center;">
-            <h3>Cambiar contrase&ntilde;a</h3>
+            <h3>Cambiar contraseña</h3>
             <form action="changepwd.php" id="changepwd-form">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" type="password" id="current_password" name="current_password">
-                    <label class="mdl-textfield__label" for="current_password">Contrase&ntilde;a actual</label>
+                    <label class="mdl-textfield__label" for="current_password">Contraseña actual</label>
                 </div>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" type="password" id="password" name="password">
-                    <label class="mdl-textfield__label" for="password">Contrase&ntilde;a nueva</label>
+                    <label class="mdl-textfield__label" for="password">Contraseña nueva</label>
                 </div>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" type="password" id="repassword" name="repassword">
-                    <label class="mdl-textfield__label" for="repassword">Confirmar contrase&ntilde;a</label>
+                    <label class="mdl-textfield__label" for="repassword">Confirmar contraseña</label>
                 </div>
             </form>
         </div>
     </div>
     <div class="mdl-dialog__actions">
-        <button id="close-button" type="button" class="mdl-button">Cancelar</button>
-        <button id="change-pwd-button" type="button" class="mdl-button">Aceptar</button>
+        <button id="close-button" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Cancelar</button>
+        <button id="change-pwd-button" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">Aceptar</button>
     </div>
 </dialog>
 </div>
 </main>
 
-<footer class="mdl-mini-footer">
+<footer class="mdl-mini-footer" style="">
     <div class="mdl-mini-footer__left-section">
         <ul class="mdl-mini-footer__link-list">
             <li><a href="#">Ayuda</a></li>
