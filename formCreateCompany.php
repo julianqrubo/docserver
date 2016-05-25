@@ -20,7 +20,7 @@ include './db.php';
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
                 <input class="mdl-textfield__input" type="text" id="name" name="name" pattern="[a-z\.s]+" maxlength="30">
-                <label class="mdl-textfield__label" for="name">Nombre de le empresa</label>
+                <label class="mdl-textfield__label" for="name">Nombre de la empresa</label>
                 <span class="mdl-textfield__error">Solo letras minúsculas</span>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">

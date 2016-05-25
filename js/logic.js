@@ -1,9 +1,10 @@
 $(function () {
-    var setup_data_table = function (concept, on_ok) {
+    var setup_data_table = function (concept, on_ok, on_okCreate) {
         var table = document.querySelector("#" + concept + "-data-table");
         if (table) {
             setup_delete_dialog(concept, on_ok);
             setup_change_dialog(concept, on_ok);
+            setup_create_dialog(concept, on_okCreate);
             var headerCheckbox = table.querySelector('thead .mdl-data-table__select input');
             var boxes = table.querySelectorAll('tbody .mdl-data-table__select');
             var headerCheckHandler = function (event) {
@@ -31,6 +32,23 @@ $(function () {
         }
         return checkedIds;
     };
+
+    var setup_create_dialog = function (concept, on_ok) {
+        var createButton = document.querySelector("#" + "create-" + concept + "-button");
+        var dialogCreate = document.querySelector("#" + "create-" + concept + "-dialog");
+        var closeCreateButton = dialogCreate.querySelector('.closeCreate-button');
+        var okCreateButton = dialogCreate.querySelector('.okCreate-button');
+        createButton.addEventListener('click', function () {
+            dialogCreate.showModal();
+        });
+        closeCreateButton.addEventListener('click', function () {
+            dialogCreate.close();
+        });
+        okCreateButton.addEventListener('click', function () {
+            on_ok(dialogCreate.querySelector('form'), dialogCreate.getAttribute("action"));
+        });
+    };
+
     var setup_delete_dialog = function (concept, on_ok) {
         var deleteButton = document.querySelector("#" + "delete-" + concept + "-button");
         var dialog = document.querySelector("#" + "delete-" + concept + "-dialog");
@@ -64,7 +82,6 @@ $(function () {
         var closeButtonChangeStatus = dialogChangeStatus.querySelector('.closeChangeStatus-button');
         var okButtonChangeStatus = dialogChangeStatus.querySelector('.okChangeStatus-button');
         changeStatusButton.addEventListener('click', function () {
-            console.log("Cambiando estado");
             if (get_selected_rows(concept).length > 0) {
                 dialogChangeStatus.querySelector(".mdl-progress").style.display = "none";
                 dialogChangeStatus.showModal();
@@ -153,22 +170,26 @@ $(function () {
             };
             snackbarContainer.MaterialSnackbar.showSnackbar(data);
         });
+    }, function (form, action) {
+        $.post(action, $(form).serialize(), function (response) {
+            location.reload();
+        })
     });
 
     $('#create-users-button').on("click", function (e) {
-        location.href = location.href.replace("users.php", "formCreateUser.php")
+        location.href = location.href.replace("users.php", "formCreateUser.php");
     });
 
-    $('#create-companies-button').on("click", function (e) {
-        location.href = location.href.replace("companies.php", "formCreateCompany.php")
-    });
+    /*$('#create-companies-button').on("click", function (e) {
+     location.href = location.href.replace("companies.php", "formCreateCompany.php")
+     });*/
 
     $('#insert-comapny-button').on("click", function (e) {
         e.stopPropagation();
         e.preventDefault();
         var $frm = $("#createCompany-form");
         $.post($frm.attr("action"), $frm.serialize(), function (response) {
-            location.href = location.href.replace("formCreateCompany.php", "companies.php")
+            location.href = location.href.replace("formCreateCompany.php", "companies.php");
         }).fail(function (error) {
             console.log(error);
             var snackbarContainer = document.querySelector('#status-snackbar');
@@ -186,7 +207,7 @@ $(function () {
         e.preventDefault();
         var $frm = $("#createUser-form");
         $.post($frm.attr("action"), $frm.serialize(), function (response) {
-            location.href = location.href.replace("formCreateUser.php", "users.php")
+            location.href = location.href.replace("formCreateUser.php", "users.php");
         }).fail(function (error) {
             console.log(error);
             var snackbarContainer = document.querySelector('#status-snackbar');

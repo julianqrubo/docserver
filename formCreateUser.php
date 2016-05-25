@@ -6,11 +6,6 @@ if (!isset($_SESSION["__user__"])) {
 }
 include './header.php';
 include './db.php';
-
-$stmt = $db->prepare("SELECT id, name FROM company");
-$stmt->execute();
-$row = $stmt->fetch(PDO::FETCH_ASSOC);
-
 ?>
 
 <h3 style="text-align: center;">Registro de usuario</h3>
