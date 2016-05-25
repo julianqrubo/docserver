@@ -92,8 +92,8 @@
     <div class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="display: none;"></div>
 
     <div class="mdl-dialog__actions">
-        <button type="button" class="mdl-button ok-button" >Aceptar</button>
-        <button type="button" class="mdl-button close-button">Cancelar</button>
+        <button type="button" class="mdl-button okChangeStatus-button">Aceptar</button>
+        <button type="button" class="mdl-button closeChangeStatus-button">Cancelar</button>
     </div>
 </dialog>
 

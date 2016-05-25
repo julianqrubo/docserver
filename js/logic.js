@@ -37,6 +37,8 @@ $(function () {
         var okButton = dialog.querySelector('.ok-button');
         var changeStatusButton = document.querySelector("#" + "changeStatus-" + concept + "-button");
         var dialogChangeStatus = document.querySelector("#" + "changeStatus-" + concept + "-dialog");
+        var closeButtonChangeStatus = dialogChangeStatus.querySelector('.closeChangeStatus-button');
+        var okButtonChangeStatus = dialogChangeStatus.querySelector('.okChangeStatus-button');
         showButton.addEventListener('click', function () {
             if (get_selected_rows(concept).length > 0) {
                 dialog.querySelector(".mdl-progress").style.display = "none";
@@ -52,6 +54,7 @@ $(function () {
             }
         });
         changeStatusButton.addEventListener('click', function () {
+            console.log("Cambiando estado");
             if (get_selected_rows(concept).length > 0) {
                 dialogChangeStatus.querySelector(".mdl-progress").style.display = "none";
                 dialogChangeStatus.showModal();
@@ -68,9 +71,16 @@ $(function () {
         closeButton.addEventListener('click', function () {
             dialog.close();
         });
+        closeButtonChangeStatus.addEventListener('click', function () {
+            dialogChangeStatus.close();
+        });
         okButton.addEventListener('click', function () {
             dialog.querySelector(".mdl-progress").style.display = "";
             on_ok(get_selected_rows(concept), dialog.getAttribute("action"));
+        });
+         okButtonChangeStatus.addEventListener('click', function () {
+            dialogChangeStatus.querySelector(".mdl-progress").style.display = "";
+            on_ok(get_selected_rows(concept), dialogChangeStatus.getAttribute("action"));
         });
     };
     //onload
