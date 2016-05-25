@@ -7,14 +7,12 @@ if (isset($_POST["ids"])) {
     $ids = explode(",", $_POST["ids"]);
 }
 foreach ($ids as $id) {
-// Obtengo el state by id
-    $stmt = $db->prepare("select state from company where ID = ?;");
+    $stmt = $db->prepare("select state from company where ID = ?");
     $stmt->execute(array($id));
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $queryUpd = "update company set state = 2 where ID = ?;";
     if ($row['state'] == 2) {
         $queryUpd = "update company set state = 1 where ID = ?;";
-    } else {
-        $queryUpd = "update company set state = 2 where ID = ?;";
     }
     $stmtUpd = $db->prepare($queryUpd);
     $stmtUpd->execute(array($id));

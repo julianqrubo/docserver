@@ -57,7 +57,7 @@
                     <td class="mdl-data-table__cell--non-numeric"><?php echo $row["address"]; ?></td>
                     <td class="mdl-data-table__cell--non-numeric"><?php echo $row["phone"]; ?></td>
                     <td class="mdl-data-table__cell--non-numeric"><?php echo $row["path"]; ?></td>
-                    <td class="mdl-data-table__cell--non-numeric"><?php echo $row["state"]; ?></td>
+                    <td class="mdl-data-table__cell--non-numeric"><?php echo $row["state"] == 1 ? '<i class="material-icons">done</i>' : '<i class="material-icons">clear</i>'; ?></td>
                 </tr>
             <?php } ?>
         </tbody>

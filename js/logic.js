@@ -2,7 +2,8 @@ $(function () {
     var setup_data_table = function (concept, on_ok) {
         var table = document.querySelector("#" + concept + "-data-table");
         if (table) {
-            setup_dialog(concept, on_ok);
+            setup_delete_dialog(concept, on_ok);
+            setup_change_dialog(concept, on_ok);
             var headerCheckbox = table.querySelector('thead .mdl-data-table__select input');
             var boxes = table.querySelectorAll('tbody .mdl-data-table__select');
             var headerCheckHandler = function (event) {
@@ -30,16 +31,12 @@ $(function () {
         }
         return checkedIds;
     };
-    var setup_dialog = function (concept, on_ok) {
-        var showButton = document.querySelector("#" + "delete-" + concept + "-button");
+    var setup_delete_dialog = function (concept, on_ok) {
+        var deleteButton = document.querySelector("#" + "delete-" + concept + "-button");
         var dialog = document.querySelector("#" + "delete-" + concept + "-dialog");
         var closeButton = dialog.querySelector('.close-button');
         var okButton = dialog.querySelector('.ok-button');
-        var changeStatusButton = document.querySelector("#" + "changeStatus-" + concept + "-button");
-        var dialogChangeStatus = document.querySelector("#" + "changeStatus-" + concept + "-dialog");
-        var closeButtonChangeStatus = dialogChangeStatus.querySelector('.closeChangeStatus-button');
-        var okButtonChangeStatus = dialogChangeStatus.querySelector('.okChangeStatus-button');
-        showButton.addEventListener('click', function () {
+        deleteButton.addEventListener('click', function () {
             if (get_selected_rows(concept).length > 0) {
                 dialog.querySelector(".mdl-progress").style.display = "none";
                 dialog.showModal();
@@ -53,6 +50,19 @@ $(function () {
                 snackbarContainer.MaterialSnackbar.showSnackbar(data);
             }
         });
+        closeButton.addEventListener('click', function () {
+            dialog.close();
+        });
+        okButton.addEventListener('click', function () {
+            dialog.querySelector(".mdl-progress").style.display = "";
+            on_ok(get_selected_rows(concept), dialog.getAttribute("action"));
+        });
+    };
+    var setup_change_dialog = function (concept, on_ok) {
+        var changeStatusButton = document.querySelector("#" + "changeStatus-" + concept + "-button");
+        var dialogChangeStatus = document.querySelector("#" + "changeStatus-" + concept + "-dialog");
+        var closeButtonChangeStatus = dialogChangeStatus.querySelector('.closeChangeStatus-button');
+        var okButtonChangeStatus = dialogChangeStatus.querySelector('.okChangeStatus-button');
         changeStatusButton.addEventListener('click', function () {
             console.log("Cambiando estado");
             if (get_selected_rows(concept).length > 0) {
@@ -68,15 +78,8 @@ $(function () {
                 snackbarContainer.MaterialSnackbar.showSnackbar(data);
             }
         });
-        closeButton.addEventListener('click', function () {
-            dialog.close();
-        });
         closeButtonChangeStatus.addEventListener('click', function () {
             dialogChangeStatus.close();
-        });
-        okButton.addEventListener('click', function () {
-            dialog.querySelector(".mdl-progress").style.display = "";
-            on_ok(get_selected_rows(concept), dialog.getAttribute("action"));
         });
         okButtonChangeStatus.addEventListener('click', function () {
             dialogChangeStatus.querySelector(".mdl-progress").style.display = "";
