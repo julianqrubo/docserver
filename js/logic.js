@@ -78,7 +78,7 @@ $(function () {
             dialog.querySelector(".mdl-progress").style.display = "";
             on_ok(get_selected_rows(concept), dialog.getAttribute("action"));
         });
-         okButtonChangeStatus.addEventListener('click', function () {
+        okButtonChangeStatus.addEventListener('click', function () {
             dialogChangeStatus.querySelector(".mdl-progress").style.display = "";
             on_ok(get_selected_rows(concept), dialogChangeStatus.getAttribute("action"));
         });
@@ -88,7 +88,7 @@ $(function () {
         var $frm = $("#sigin-form");
         $.post($frm.attr("action"), $frm.serialize(), function (response) {
             console.log(arguments);
-            location.href = location.href.replace("index.php", "files.php")
+            location.href = location.href.replace("index.php", "") + "files.php";
         }).fail(function (error) {
             console.log(error);
             var snackbarContainer = document.querySelector('#status-snackbar');
@@ -159,7 +159,7 @@ $(function () {
     $('#create-companies-button').on("click", function (e) {
         location.href = location.href.replace("companies.php", "formCreateCompany.php")
     });
-    
+
     $('#insert-comapny-button').on("click", function (e) {
         e.stopPropagation();
         e.preventDefault();
@@ -177,7 +177,7 @@ $(function () {
             snackbarContainer.MaterialSnackbar.showSnackbar(data);
         });
     });
-    
+
     $('#insert-user-button').on("click", function (e) {
         e.stopPropagation();
         e.preventDefault();

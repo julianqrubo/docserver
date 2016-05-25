@@ -21,7 +21,7 @@
         $_SESSION['__phone__'] =  $row["phone"];
         $_SESSION['__isadmin__'] =  $row["isAdmin"];
         $_SESSION['__company__'] =  $row["companyId"];
-        echo "1";
+        echo $row["id"]." -- ".$row["name"]."----".$_SESSION['__user__'];
     } else {
         http_response_code(401);
         echo "Usuario o contraseña incorrectos.";
