@@ -13,7 +13,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 $files = [];
 $path = "";
 if ($row) {
-    $path = getcwd() . '/pdfs/' . $row["path"];
+    $path = getcwd() . '/fileRepository/' . $row["path"];
     if (file_exists($path)) {
         $files = array_diff(scandir($path), array('..', '.'));
         if (count($files)) {

@@ -7,14 +7,14 @@ if (!isset($_SESSION["__user__"])) {
 include './header.php';
 include './db.php';
 
-$stmt_cbox = $db->prepare("SELECT ID, name, path FROM company where state = 1 order by name asc");
+$stmt_cbox = $db->prepare("SELECT ID, name FROM company where state = 1 order by name asc");
 $stmt_cbox->execute();
 $rows_cbox = $stmt_cbox->fetchAll(PDO::FETCH_ASSOC);
 $row_cunter_cbox = $stmt_cbox->rowCount();
 
 $cboxCompany = "";
 foreach ($rows_cbox as $id) {
-    $cboxCompany .=" <option value='" . $id['path'] . "'>" . $id['name'] . "</option>";
+    $cboxCompany .=" <option value='" . $id['ID'] . "'>" . $id['name'] . "</option>";
 }
 ?>
 
@@ -28,7 +28,7 @@ foreach ($rows_cbox as $id) {
         <h3 style="text-align: center;">Cargue de archivos</h3>
         <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: auto; margin-right: auto; margin-top: 5%; width: 500px">
             <div style="text-align: center;">
-                <form method="POST" action="uploadFiles.php" id="uploadFiles-form" enctype="multipart/form-data">
+                <form method="POST" action="upload.php" id="uploadFiles-form" enctype="multipart/form-data">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="margin-left: auto; margin-right: auto; margin-top: 5%;">
                         <label class="mdl-textfield__label">Empresa</label>
                         <select id="companyId" name="companyId" class="mdl-textfield__input">
@@ -36,10 +36,8 @@ foreach ($rows_cbox as $id) {
                         </select>
                     </div>
                     <div style="margin-left: auto; margin-right: auto; margin-top: 5%;">
-                        <label for="archivo">Archivo:</label>
-                        <input type="file" name="archivo" id="archivo" />
-                        <br/>
-                        <input type="submit" value="Enviar" />
+                        <input type="file" name="fileToUpload" id="fileToUpload" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+                        <input type="submit" value="Cargar archivo" name="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
                     </div>
                 </form>
             </div>
