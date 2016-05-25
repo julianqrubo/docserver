@@ -45,7 +45,7 @@ try {
     if ($row) {
         echo "Se ingresaron los registros con exito";
     } else {
-        echo "No se ingresaron los registros.";
+        echo "No se ingresaron los registros";
     }
 } catch (Exception $ex) {
     http_response_code(500);

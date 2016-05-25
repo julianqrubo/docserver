@@ -6,6 +6,11 @@ if (!isset($_SESSION["__user__"])) {
 }
 include './header.php';
 include './db.php';
+
+$stmt = $db->prepare("SELECT id, companyId, name, lastName, username, pwd, email, phone, isAdmin FROM company WHERE username = ? AND pwd = ?");
+$stmt->execute(array($username, $password));
+$row = $stmt->fetch(PDO::FETCH_ASSOC);
+
 ?>
 
 <h3 style="text-align: center;">Registro de usuario</h3>
