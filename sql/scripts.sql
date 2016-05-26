@@ -7,8 +7,10 @@ CREATE TABLE `company` (
   `path` varchar(30) NOT NULL,
   `state` int(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`ID`),
-  UNIQUE KEY `idx_company_documentId` (`documentId`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=latin1;
+  UNIQUE KEY `idx_company_documentId` (`documentId`),
+  KEY `idx_company_state` (`state`)
+) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=latin1;
+SELECT * FROM docserverjm.users;
 
 
 CREATE TABLE `users` (
@@ -22,8 +24,10 @@ CREATE TABLE `users` (
   `phone` varchar(15) DEFAULT NULL,
   `isAdmin` int(1) NOT NULL,
   PRIMARY KEY (`ID`),
-  UNIQUE KEY `idx_users_username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
+  UNIQUE KEY `idx_users_username` (`username`),
+  KEY `idx_users_companyId` (`companyId`),
+  KEY `idx_users_isAdmin` (`isAdmin`)
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=latin1;
 
 
 INSERT INTO `docserverjm`.`company` (`documentId`, `name`, `address`, `phone`, `path`) VALUES (91534697, 'nemesys', 'la casa de migue migue', '1234567', '/nemesys/data');

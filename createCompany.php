@@ -4,17 +4,17 @@ session_start();
 include './db.php';
 include './errors.php';
 
-$documentId = NULL;
-$name = "";
-$address = "";
-$phone = "";
-$path = "";
+$documentId = filter_input(INPUT_POST, "documentId");
+$name = filter_input(INPUT_POST, "name");
+$address = Null;
+$phone = Null;
+$path = filter_input(INPUT_POST, "path");
 
-if (isset($_POST["documentId"])) {
-    $documentId = $_POST["documentId"];
+if (empty($documentId)) {
+    $documentId = NULL;
 }
-if (isset($_POST["name"])) {
-    $name = $_POST["name"];
+if (empty($name)) {
+    $name = NULL;
 }
 if (isset($_POST["address"])) {
     $address = $_POST["address"];
@@ -22,8 +22,8 @@ if (isset($_POST["address"])) {
 if (isset($_POST["phone"])) {
     $phone = $_POST["phone"];
 }
-if (isset($_POST["path"])) {
-    $path = $_POST["path"];
+if (empty($path)) {
+    $path = NULL;
 }
 
 try {

@@ -1,3 +1,7 @@
+<?php 
+    //Para ponerlo en producción debe poner $mode = ".min";
+    $mode = "";
+?>
 <dialog class="mdl-dialog" id="change-pwd-dialog" style="width: 500px">
     <div class="mdl-dialog__content">
         <div style="text-align: center;">

@@ -105,13 +105,12 @@
             <label class="mdl-textfield__label" for="companyId">NIT de la empresa</label>
             <span class="mdl-textfield__error">Solo números</span>
         </div>
-        <!-- <div class="mdl-tooltip" for="documentId">NIT de la empresa o documento de identificación</div> -->
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
             <input class="mdl-textfield__input" type="text" id="name" name="name" pattern="[a-z\s]*$" maxlength="30">
             <label class="mdl-textfield__label" for="name">Nombre de la empresa</label>
             <span class="mdl-textfield__error">Solo letras minúsculas</span>
         </div>
-        <div class="mdl-tooltip" for="name">Nombre de la empresa</div>d
+        <div class="mdl-tooltip" for="name">Nombre de la empresa</div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
             <input class="mdl-textfield__input" type="text" id="address" name="address" pattern="[a-z1-9\s]*$" maxlength="30">
             <label class="mdl-textfield__label" for="address">Dirección de empresa</label>

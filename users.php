@@ -78,17 +78,14 @@ foreach ($rows_cbox as $id) {
     <h3 style="text-align: center;">Registro de usuario</h3>
     <form action="createUser.php" id="createUser-form">
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
-            <!--<input class="mdl-textfield__input" type="text" id="companyId" name="companyId" pattern="^\d*$">
-            <label class="mdl-textfield__label" for="companyId">Empresa</label>
-            <span class="mdl-textfield__error">Solo números</span>  -->
             <label class="mdl-textfield__label">Empresa</label>
             <select id="companyId" name="companyId" class="mdl-textfield__input">
                 <?php echo $cboxCompany; ?>
             </select>
         </div>
         <div class="mdl-textfield mdl-js-textfield" style="width: 100%">
-            <input class="mdl-textfield__input" type="text" id="name" pattern="[a-z\s]*$" maxlength="30">
-            <label class="mdl-textfield__label" for="name">Nombre de la persona</label>
+            <input class="mdl-textfield__input" type="text" id="name" name="name" pattern="[a-z\s]*$" maxlength="30">
+            <label class="mdl-textfield__label" for="name">Nombre</label>
             <span class="mdl-textfield__error">Solo letras minúsculas</span>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
@@ -116,9 +113,6 @@ foreach ($rows_cbox as $id) {
             <span class="mdl-textfield__error">Solo números</span>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
-            <!--<input class="mdl-textfield__input" type="text" id="isAdmin" name="isAdmin" pattern="^\d*$" maxlength="1">
-            <label class="mdl-textfield__label" for="isAdmin">¿Es administrador?</label>
-            <span class="mdl-textfield__error">Solo números</span> -->
             <label class="mdl-textfield__label">¿Es administrador?</label>
             <select id="isAdmin" name="isAdmin" class="mdl-textfield__input">
                 <option value=2>No</option>

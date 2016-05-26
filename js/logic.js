@@ -3,7 +3,7 @@ $(function () {
         var table = document.querySelector("#" + concept + "-data-table");
         if (table) {
             setup_delete_dialog(concept, on_ok);
-            if(concept == "companies"){
+            if (concept == "companies") {
                 setup_change_dialog(concept, on_ok);
             }
             setup_create_dialog(concept, on_okCreate);
@@ -175,8 +175,8 @@ $(function () {
     if (createCompanyDialog || deleteCompanyDialog || changeStatusCompanyDialog) {
         conceptType = "companies";
     }
-    
-    if(createUserDialog || deleteUserDialog){
+
+    if (createUserDialog || deleteUserDialog) {
         conceptType = "users";
     }
     setup_data_table(conceptType, function (sels, action) {

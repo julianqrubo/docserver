@@ -4,29 +4,29 @@ session_start();
 include './db.php';
 include './errors.php';
 
-$companyId = Null;
-$name = "";
-$lastName = "";
-$userName = "";
-$pwd = "";
-$email = "";
-$phone = "";
+$companyId = filter_input(INPUT_POST, "companyId");
+$name = filter_input(INPUT_POST, "name");
+$lastName = filter_input(INPUT_POST, "lastName");
+$userName = filter_input(INPUT_POST, "userName");
+$pwd = filter_input(INPUT_POST, "pwd");
+$email = Null;
+$phone = Null;
 $isAdmin = 1;
 
-if (isset($_POST["companyId"])) {
-    $companyId = $_POST["companyId"];
+if (empty($companyId)) {
+    $companyId = NULL;
 }
-if (isset($_POST["name"])) {
-    $name = $_POST["name"];
+if (empty($name)) {
+    $name = NULL;
 }
-if (isset($_POST["lastName"])) {
-    $lastName = $_POST["lastName"];
+if (empty($lastName)) {
+    $lastName = NULL;
 }
-if (isset($_POST["userName"])) {
-    $userName = $_POST["userName"];
+if (empty($userName)) {
+    $userName = NULL;
 }
-if (isset($_POST["pwd"])) {
-    $pwd = $_POST["pwd"];
+if (empty($pwd)) {
+    $pwd = NULL;
 }
 if (isset($_POST["email"])) {
     $email = $_POST["email"];
