@@ -7,6 +7,7 @@ if (!isset($_SESSION["__user__"])) {
 }
 include './header.php';
 include './db.php';
+include './errors.php';
 //Recibo el id de la empresa a la que le voy a cargar los files
 $companyId = $_POST["companyId"];
 $stmt = $db->prepare("SELECT path FROM company WHERE id = ?");
@@ -22,13 +23,14 @@ if ($row) {
 $target_dir = $path;
 $resultMsg = "";
 
-// Variables para insertar en upload_file
-$upload_user = $_SESSION['__id__'];
-$source_name = "";
-if ($_FILES["fileToUpload"]["name"][0]) {
-    $source_name = $_FILES["fileToUpload"]["name"][0];
-}
-
+$upload_user = $_SESSION["__user__"];
+$upload_source_name = NULL;
+$upload_type = NULL;
+$upload_size = NULL;
+$upload_error = NULL;
+$upload_date = NULL;
+$upload_path = NULL;
+$upload_extension= NULL;
 
 if ($_FILES["fileToUpload"]["name"][0]) {
     echo "<div class='demo-card-wide mdl-card mdl-shadow--2dp' style='margin-left: auto; margin-right: auto; margin-top: 30px; margin-bottom:auto; width: 600px'>
@@ -37,7 +39,14 @@ if ($_FILES["fileToUpload"]["name"][0]) {
                 <form id='uploadFiles-form'>
                     <div>";
     for ($i = 0; $i < count($_FILES["fileToUpload"]["name"]); $i++) {
+        $upload_source_name = $_FILES["fileToUpload"]["name"][$i];
+        $upload_type = $_FILES["fileToUpload"]["type"][$i];
+        $upload_size = $_FILES["fileToUpload"]["size"][$i];
+        $upload_error = $_FILES["fileToUpload"]["error"][$i];
+        
         $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"][$i]);
+        $upload_extension = end( explode('.', $target_file) );
+        $upload_path = $target_dir;
         $uploadOk = 1;
 
         if (file_exists($target_file)) {
@@ -54,11 +63,23 @@ if ($_FILES["fileToUpload"]["name"][0]) {
         if ($uploadOk == 0) {
             $resultMsg = "<p><font color='red'>El archivo " . basename($_FILES["fileToUpload"]["name"][$i]) . " no fue cargado</font></p>";
         } else {
-            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"][$i], $target_file)) {
-                // Acá se inserta en la tabla upload_file
-                $resultMsg = "<p><font color='green'>El archivo " . basename($_FILES["fileToUpload"]["name"][$i]) . " ha sido cargado</font></p>";
-            } else {
-                $resultMsg = "<p><font color='red'>Ha ocurrido un error cargando el archivo " . basename($_FILES["fileToUpload"]["name"][$i]) . "</font></p>";
+            // Acá se inserta en la tabla upload_file
+            $upload_date = date("Y-m-d");
+            try {
+                $stmt = $db->prepare("INSERT INTO upload_file (user,source_name,type,size,error,upload_date,path) VALUES (?, ?, ?, ?, ?, ?, ?);");
+                $stmt->execute(array($upload_user, $upload_source_name, $upload_type, $upload_size, $upload_error, $upload_date, $upload_path));
+                $insertId = $db->lastInsertId();
+                $row = $stmt->rowCount();
+                if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"][$i], $target_dir.$insertId.".".$upload_extension)) {
+                    $resultMsg = "<p><font color='green'>El archivo " . basename($_FILES["fileToUpload"]["name"][$i]) . " ha sido cargado</font></p>";
+                } else {
+                    $resultMsg = "<p><font color='red'>Ha ocurrido un error cargando el archivo " . basename($_FILES["fileToUpload"]["name"][$i]) . "</font></p>";
+                }
+            } catch (Exception $exc) {
+                //echo $exc->getTraceAsString();
+                echo $resultMsg;
+                http_response_code(500);
+                echo get_error($exc->getCode(), $exc->getMessage());
             }
         }
         echo $resultMsg;
