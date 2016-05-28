@@ -9,15 +9,15 @@
             <form action="changepwd.php" id="changepwd-form">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" type="password" id="current_password" name="current_password">
-                    <label class="mdl-textfield__label" for="current_password">Contraseña actual</label>
+                    <label class="mdl-textfield__label" for="current_password"><b>Contraseña actual*</b></label>
                 </div>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" type="password" id="password" name="password">
-                    <label class="mdl-textfield__label" for="password">Contraseña nueva</label>
+                    <label class="mdl-textfield__label" for="password"><b>Contraseña nueva*</b></label>
                 </div>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" type="password" id="repassword" name="repassword">
-                    <label class="mdl-textfield__label" for="repassword">Confirmar contraseña</label>
+                    <label class="mdl-textfield__label" for="repassword"><b>Confirmar contraseña*</b></label>
                 </div>
             </form>
         </div>

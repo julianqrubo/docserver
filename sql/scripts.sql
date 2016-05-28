@@ -29,6 +29,18 @@ CREATE TABLE `users` (
   KEY `idx_users_isAdmin` (`isAdmin`)
 ) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=latin1;
 
+CREATE TABLE `upload_file` (
+  `ID` int(8) unsigned NOT NULL AUTO_INCREMENT,
+  `user` int(8) NOT NULL,
+  `source_name` varchar(100) NOT NULL,
+  `destination_name` int(8) NOT NULL,
+  `type` varchar(30) DEFAULT NULL,
+  `size` bigint(20) NOT NULL,
+  `error` varchar(100) DEFAULT NULL,
+  `upload_date` date NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 INSERT INTO `docserverjm`.`company` (`documentId`, `name`, `address`, `phone`, `path`) VALUES (91534697, 'nemesys', 'la casa de migue migue', '1234567', '/nemesys/data');
 

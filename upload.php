@@ -12,7 +12,7 @@ $companyId = $_POST["companyId"];
 $stmt = $db->prepare("SELECT path FROM company WHERE id = ?");
 $stmt->execute(array($companyId));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
-$files = [];
+
 $path = "";
 
 if ($row) {
@@ -20,49 +20,51 @@ if ($row) {
 }
 
 $target_dir = $path;
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-$uploadOk = 1;
-$imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
-// Check if image file is a actual image or fake image
-if (isset($_POST["submit"])) {
-    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-    if ($check !== false) {
-        echo "File is an image - " . $check["mime"] . ".";
+$resultMsg = "";
+
+// Variables para insertar en upload_file
+$upload_user = $_SESSION['__id__'];
+$source_name = "";
+if ($_FILES["fileToUpload"]["name"][0]) {
+    $source_name = $_FILES["fileToUpload"]["name"][0];
+}
+
+
+if ($_FILES["fileToUpload"]["name"][0]) {
+    echo "<div class='demo-card-wide mdl-card mdl-shadow--2dp' style='margin-left: auto; margin-right: auto; margin-top: 30px; margin-bottom:auto; width: 600px'>
+            <h2 style='text-align: center'>Resultado de la operación</h2>
+            <div style='text-align: left; margin-left: 20px; margin-right: 20px'>
+                <form id='uploadFiles-form'>
+                    <div>";
+    for ($i = 0; $i < count($_FILES["fileToUpload"]["name"]); $i++) {
+        $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"][$i]);
         $uploadOk = 1;
-    } else {
-        echo "File is not an image.";
-        $uploadOk = 0;
+
+        if (file_exists($target_file)) {
+            $resultMsg = "<p><font color='red'>El archivo " . basename($_FILES["fileToUpload"]["name"][$i]) . " ya existe</font></p>";
+            $uploadOk = 0;
+        } else {
+            $archivocreado = mkdir($target_dir);
+            $uploadOk = 1;
+        }
+        if ($_FILES["fileToUpload"]["size"][$i] > 5000000) {
+            $resultMsg = "<p><font color='red'>El archivo " . basename($_FILES["fileToUpload"]["name"][$i]) . " es muy pesado</font></p>";
+            $uploadOk = 0;
+        }
+        if ($uploadOk == 0) {
+            $resultMsg = "<p><font color='red'>El archivo " . basename($_FILES["fileToUpload"]["name"][$i]) . " no fue cargado</font></p>";
+        } else {
+            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"][$i], $target_file)) {
+                // Acá se inserta en la tabla upload_file
+                $resultMsg = "<p><font color='green'>El archivo " . basename($_FILES["fileToUpload"]["name"][$i]) . " ha sido cargado</font></p>";
+            } else {
+                $resultMsg = "<p><font color='red'>Ha ocurrido un error cargando el archivo " . basename($_FILES["fileToUpload"]["name"][$i]) . "</font></p>";
+            }
+        }
+        echo $resultMsg;
     }
+    echo "</div></form></div></div>";
 }
-// Check if file already exists
-if (file_exists($target_file)) {
-    echo "Sorry, file already exists.";
-    $uploadOk = 0;
-}else{
-    $archivocreado = mkdir($target_dir);
-    echo $archivocreado;
-    $uploadOk = 1;
-}
-// Check file size
-if ($_FILES["fileToUpload"]["size"] > 5000000) {
-    echo "Sorry, your file is too large.";
-    $uploadOk = 0;
-}
-// Allow certain file formats
-/*if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
-    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-    $uploadOk = 0;
-}*/
-// Check if $uploadOk is set to 0 by an error
-if ($uploadOk == 0) {
-    echo "Sorry, your file was not uploaded.";
-    // if everything is ok, try to upload file
-} else {
-    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-        echo "The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded.";
-    } else {
-        echo "Sorry, there was an error uploading your file.";
-    }
-} 
+
 include './footer.php';
 ?>

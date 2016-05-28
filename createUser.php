@@ -4,6 +4,21 @@ session_start();
 include './db.php';
 include './errors.php';
 
+function validateRequired($valor) {
+    if (trim($valor) == '') {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function validateConntentField($regex, $valor) {
+    if (!preg_match($regex, $valor)) {
+        return false;
+    }
+    return true;
+}
+
 $companyId = filter_input(INPUT_POST, "companyId");
 $name = filter_input(INPUT_POST, "name");
 $lastName = filter_input(INPUT_POST, "lastName");
@@ -37,6 +52,14 @@ if (isset($_POST["phone"])) {
 if (isset($_POST["isAdmin"])) {
     $isAdmin = $_POST["isAdmin"];
 }
+
+echo validateRequired($companyId);
+echo validateRequired($name);
+echo validateRequired($lastName);
+echo validateRequired($userName);
+echo validateRequired($pwd);
+
+echo validateConntentField("[a-z\d.]*$", $userName);
 
 try {
     $stmt = $db->prepare("INSERT INTO users (companyId,name,lastName,userName,pwd,email,phone,isAdmin) VALUES (?, ?, ?, ?, ?, ?, ?, ?);");

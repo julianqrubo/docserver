@@ -78,29 +78,29 @@ foreach ($rows_cbox as $id) {
     <h3 style="text-align: center;">Registro de usuario</h3>
     <form action="createUser.php" id="createUser-form">
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
-            <label class="mdl-textfield__label">Empresa</label>
+            <label class="mdl-textfield__label"><b>Empresa*</b></label>
             <select id="companyId" name="companyId" class="mdl-textfield__input">
                 <?php echo $cboxCompany; ?>
             </select>
         </div>
         <div class="mdl-textfield mdl-js-textfield" style="width: 100%">
             <input class="mdl-textfield__input" type="text" id="name" name="name" pattern="[a-z\s]*$" maxlength="30">
-            <label class="mdl-textfield__label" for="name">Nombre</label>
+            <label class="mdl-textfield__label" for="name"><b>Nombre*</b></label>
             <span class="mdl-textfield__error">Solo letras minúsculas</span>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
             <input class="mdl-textfield__input" type="text" id="lastName" name="lastName" pattern="[a-z\s]*$" maxlength="30">
-            <label class="mdl-textfield__label" for="lastName">Apellidos</label>
+            <label class="mdl-textfield__label" for="lastName"><b>Apellidos*</b></label>
             <span class="mdl-textfield__error">Solo letras minúsculas</span>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
-            <input class="mdl-textfield__input" type="text" id="userName" name="userName" pattern="[a-z\.]+" maxlength="20">
-            <label class="mdl-textfield__label" for="userName">Nombre de usuario</label>
-            <span class="mdl-textfield__error">Solo letras minúsculas y puntos (.)</span>
+            <input class="mdl-textfield__input" type="text" id="userName" name="userName" pattern="[a-z\d.]*$" maxlength="20">
+            <label class="mdl-textfield__label" for="userName"><b>Nombre de usuario*</b></label>
+            <span class="mdl-textfield__error">Solo letras minúsculas, números y puntos (.)</span>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
             <input class="mdl-textfield__input" type="password" id="pwd" name="pwd">
-            <label class="mdl-textfield__label" for="pwd">Contraseña</label>
+            <label class="mdl-textfield__label" for="pwd"><b>Contraseña*</b></label>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
             <input class="mdl-textfield__input" type="text" id="email" name="email" pattern="([a-z]+[a-z1-9._-]*)@{1}([a-z1-9\.]{2,})\.([a-z]{2,3})$" maxlength="40">
@@ -113,7 +113,7 @@ foreach ($rows_cbox as $id) {
             <span class="mdl-textfield__error">Solo números</span>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
-            <label class="mdl-textfield__label">¿Es administrador?</label>
+            <label class="mdl-textfield__label"><b>¿Es administrador?*</b></label>
             <select id="isAdmin" name="isAdmin" class="mdl-textfield__input">
                 <option value=2>No</option>
                 <option value=1>Si</option>

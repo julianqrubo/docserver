@@ -102,28 +102,27 @@
     <form action="createCompany.php" id="createCompany-form">
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
             <input class="mdl-textfield__input" type="text" id="documentId" name="documentId" pattern="^\d*$" maxlength="10">
-            <label class="mdl-textfield__label" for="companyId">NIT de la empresa</label>
+            <label class="mdl-textfield__label" for="companyId"><b>NIT*</b></label>
             <span class="mdl-textfield__error">Solo números</span>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
             <input class="mdl-textfield__input" type="text" id="name" name="name" pattern="[a-z\s]*$" maxlength="30">
-            <label class="mdl-textfield__label" for="name">Nombre de la empresa</label>
+            <label class="mdl-textfield__label" for="name"><b>Nombre*</b></label>
             <span class="mdl-textfield__error">Solo letras minúsculas</span>
         </div>
-        <div class="mdl-tooltip" for="name">Nombre de la empresa</div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
             <input class="mdl-textfield__input" type="text" id="address" name="address" pattern="[a-z1-9\s]*$" maxlength="30">
-            <label class="mdl-textfield__label" for="address">Dirección de empresa</label>
+            <label class="mdl-textfield__label" for="address">Dirección</label>
             <span class="mdl-textfield__error">Solo letras minúsculas y números</span>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
             <input class="mdl-textfield__input" type="text" id="phone" name="phone" pattern="^\d*$" maxlength="15">
-            <label class="mdl-textfield__label" for="phone">Teléfono de empresa</label>
+            <label class="mdl-textfield__label" for="phone">Teléfono</label>
             <span class="mdl-textfield__error">Solo números</span>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
             <input class="mdl-textfield__input" type="text" id="path" name="path" pattern="[a-z]*$" maxlength="30">
-            <label class="mdl-textfield__label" for="path">Nombre del directorio</label>
+            <label class="mdl-textfield__label" for="path"><b>Nombre de la carpeta*</b></label>
             <span class="mdl-textfield__error">Solo letras minúsculas</span>
         </div>
         <div>

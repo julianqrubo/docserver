@@ -4,6 +4,14 @@ session_start();
 include './db.php';
 include './errors.php';
 
+function validateRequired($valor) {
+    if (trim($valor) == '') {
+        return false;
+    } else {
+        return true;
+    }
+}
+
 $documentId = filter_input(INPUT_POST, "documentId");
 $name = filter_input(INPUT_POST, "name");
 $address = Null;
@@ -25,6 +33,10 @@ if (isset($_POST["phone"])) {
 if (empty($path)) {
     $path = NULL;
 }
+
+echo validateRequired($documentId);
+echo validateRequired($name);
+echo validateRequired($path);
 
 try {
     $stmt = $db->prepare("INSERT INTO company (documentId,name,address,phone,path,state) VALUES (?, ?, ?, ?, ?, ?);");

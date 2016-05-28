@@ -36,7 +36,7 @@ foreach ($rows_cbox as $id) {
                         </select>
                     </div>
                     <div style="margin-left: auto; margin-right: auto; margin-top: 5%;">
-                        <input type="file" name="fileToUpload" id="fileToUpload" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+                        <input type="file" name="fileToUpload[]" id="fileToUpload" multiple="multiple" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
                         <input type="submit" value="Cargar archivo" name="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
                     </div>
                 </form>
