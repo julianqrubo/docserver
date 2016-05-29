@@ -36,7 +36,7 @@ CREATE TABLE `upload_file` (
   `type` varchar(100) DEFAULT NULL,
   `size` bigint(20) NOT NULL,
   `error` varchar(100) DEFAULT NULL,
-  `upload_date` date NOT NULL,
+  `upload_date` datetime NOT NULL,
   `path` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

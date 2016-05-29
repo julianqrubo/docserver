@@ -28,7 +28,6 @@ $upload_source_name = NULL;
 $upload_type = NULL;
 $upload_size = NULL;
 $upload_error = NULL;
-$upload_date = NULL;
 $upload_path = NULL;
 $upload_extension= NULL;
 
@@ -63,11 +62,9 @@ if ($_FILES["fileToUpload"]["name"][0]) {
         if ($uploadOk == 0) {
             $resultMsg = "<p><font color='red'>El archivo " . basename($_FILES["fileToUpload"]["name"][$i]) . " no fue cargado</font></p>";
         } else {
-            // Acá se inserta en la tabla upload_file
-            $upload_date = date("Y-m-d");
             try {
-                $stmt = $db->prepare("INSERT INTO upload_file (user,source_name,type,size,error,upload_date,path) VALUES (?, ?, ?, ?, ?, ?, ?);");
-                $stmt->execute(array($upload_user, $upload_source_name, $upload_type, $upload_size, $upload_error, $upload_date, $upload_path));
+                $stmt = $db->prepare("INSERT INTO upload_file (user,source_name,type,size,error,upload_date,path) VALUES (?, ?, ?, ?, ?, now(), ?);");
+                $stmt->execute(array($upload_user, $upload_source_name, $upload_type, $upload_size, $upload_error, $upload_path));
                 $insertId = $db->lastInsertId();
                 $row = $stmt->rowCount();
                 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"][$i], $target_dir.$insertId.".".$upload_extension)) {

@@ -12,9 +12,8 @@ $stmt->execute(array($company));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 $files = [];
 $path = "";
-$uploadId = NULL;
 if ($row) {
-    $path = getcwd() . '/fileRepository/' . $row["path"];
+    $path = getcwd() . '/fileRepository/';
     if (file_exists($path)) {
         $files = array_diff(scandir($path), array('..', '.'));
         if (count($files)) {
@@ -24,23 +23,11 @@ if ($row) {
             <ul class="files mdl-list">
                 <?php
                 foreach ($files as $file) {
-                    $uploadId = current(explode('.', $file));
-                    $arrayUploadId[] = $uploadId;
-                }
-                array_multisort($arrayUploadId, SORT_DESC, SORT_NUMERIC);
-                foreach ($arrayUploadId as $ids) {
                     ?>
-                    <li class = "mdl-list__item">
-                        <span class = "mdl-list__item-primary-content">
-                            <i class = "material-icons">attach_file</i>
-                            <a href = "#" id = "download_text">
-                                <?php
-                                $stmt_file = $db->prepare("SELECT source_name FROM upload_file WHERE id = " . $ids);
-                                $stmt_file->execute();
-                                $row_file = $stmt_file->fetch(PDO::FETCH_ASSOC);
-                                echo $row_file['source_name'];
-                                ?>
-                            </a>
+                    <li class="mdl-list__item">
+                        <span class="mdl-list__item-primary-content">
+                            <i class="material-icons">attach_file</i>
+                            <a href="#" id="download_text"><?php echo $file; ?></a>
                         </span>
                         <a href="#" id="download_icon"><i class="material-icons">cloud_download</i></a>
                     </li>
