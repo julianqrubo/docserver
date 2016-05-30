@@ -7,7 +7,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="description" content="Software para la descarga de historias cl&iacute;nicas.">
+        <meta name="description" content="Repositorio de archivos">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
         <title>Repositorio de archivos <?php echo $_SERVER["REQUEST_URI"] ?></title>
 
@@ -34,7 +34,6 @@
     </head>
 
     <body>
-
         <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: auto; margin-right: auto; margin-top: 20%;">
             <div class="mdl-card__title">
                 <h2 class="mdl-card__title-text">Inicio de sesión</h2>
