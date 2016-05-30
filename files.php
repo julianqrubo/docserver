@@ -26,7 +26,7 @@ if ($row) {
                 foreach ($files as $file) {
                     $arrayFile[] = $file;
                 }
-                array_multisort($arrayFile, SORT_DESC, SORT_STRING);
+                array_multisort($arrayFile, SORT_DESC, SORT_NUMERIC);
                 foreach ($arrayFile as $ids) {
                     $uploadId = current(explode('.', $ids));
                     ?>

@@ -1,8 +1,8 @@
 CREATE TABLE `company` (
   `ID` int(8) unsigned NOT NULL AUTO_INCREMENT,
   `documentId` bigint(20) NOT NULL,
-  `name` varchar(30) NOT NULL,
-  `address` varchar(30) DEFAULT NULL,
+  `name` varchar(100) NOT NULL,
+  `address` varchar(100) DEFAULT NULL,
   `phone` varchar(15) DEFAULT NULL,
   `path` varchar(30) NOT NULL,
   `state` int(1) NOT NULL DEFAULT '1',
@@ -16,8 +16,8 @@ SELECT * FROM docserverjm.users;
 CREATE TABLE `users` (
   `ID` int(8) unsigned NOT NULL AUTO_INCREMENT,
   `companyId` int(8) NOT NULL,
-  `name` varchar(30) NOT NULL,
-  `lastName` varchar(30) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `lastName` varchar(100) NOT NULL,
   `username` varchar(20) NOT NULL,
   `pwd` varchar(25) NOT NULL,
   `email` varchar(40) DEFAULT NULL,

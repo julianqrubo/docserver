@@ -4,12 +4,8 @@ session_start();
 include './db.php';
 include './errors.php';
 
-function validateRequired($valor) {
-    if (trim($valor) == '') {
-        return false;
-    } else {
-        return true;
-    }
+function validateConntentField($regex, $valor) {
+    return preg_match($regex, $valor);
 }
 
 $documentId = filter_input(INPUT_POST, "documentId");
@@ -34,18 +30,20 @@ if (empty($path)) {
     $path = NULL;
 }
 
-echo validateRequired($documentId);
-echo validateRequired($name);
-echo validateRequired($path);
+$vDocumentId = validateConntentField("/^\d*$/", $documentId);
+$vName = validateConntentField("/^[a-zñáéíóú\s]{4,30}$/", $name);
+if ($phone) {
+    $vPhone = validateConntentField("/^\d*$/", $phone);
+} else {
+    $vPhone = TRUE;
+}
+$vPath = validateConntentField("/^[a-z]*$/", $path);
 
 try {
-    $stmt = $db->prepare("INSERT INTO company (documentId,name,address,phone,path,state) VALUES (?, ?, ?, ?, ?, ?);");
-    $stmt->execute(array($documentId, $name, $address, $phone, $path, 1));
-    $row = $stmt->rowCount();
-    if ($row) {
-        echo "Se ingresaron los registros con exito";
-    } else {
-        echo "No se ingresaron los registros.";
+    if($vDocumentId && $vName && $vPhone && $vPath) {
+        $stmt = $db->prepare("INSERT INTO company (documentId,name,address,phone,path,state) VALUES (?, ?, ?, ?, ?, ?);");
+        $stmt->execute(array($documentId, $name, $address, $phone, $path, 1));
+        $row = $stmt->rowCount();
     }
 } catch (Exception $ex) {
     http_response_code(500);

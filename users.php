@@ -83,27 +83,30 @@ foreach ($rows_cbox as $id) {
                 <?php echo $cboxCompany; ?>
             </select>
         </div>
-        <div class="mdl-textfield mdl-js-textfield" style="width: 100%">
-            <input class="mdl-textfield__input" type="text" id="name" name="name" pattern="[a-z\s]*$" maxlength="30">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
+            <!-- <input class="mdl-textfield__input" type="text" id="name" name="name" pattern="[a-z\s]*$" maxlength="30"> -->
+            <input class="mdl-textfield__input" type="text" id="name" name="name" pattern="[a-zñáéíóú\s]{4,100}$" maxlength="100">
             <label class="mdl-textfield__label" for="name"><b>Nombre*</b></label>
-            <span class="mdl-textfield__error">Solo letras minúsculas</span>
+            <span class="mdl-textfield__error">Solo letras minúsculas, espacios, entre 4 y 100 caracteres</span>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
-            <input class="mdl-textfield__input" type="text" id="lastName" name="lastName" pattern="[a-z\s]*$" maxlength="30">
+            <input class="mdl-textfield__input" type="text" id="lastName" name="lastName" pattern="[a-zñáéíóú\s]{4,100}$" maxlength="100">
             <label class="mdl-textfield__label" for="lastName"><b>Apellidos*</b></label>
-            <span class="mdl-textfield__error">Solo letras minúsculas</span>
+            <span class="mdl-textfield__error">Solo letras minúsculas, espacios, entre 4 y 100 caracteres</span>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
-            <input class="mdl-textfield__input" type="text" id="userName" name="userName" pattern="[a-z\d.]*$" maxlength="20">
+            <!--<input class="mdl-textfield__input" type="text" id="userName" name="userName" pattern="[a-z\d.]*$" maxlength="20"> -->
+            <input class="mdl-textfield__input" type="text" id="userName" name="userName" pattern="[a-z\d_.]{4,20}$" maxlength="20">
             <label class="mdl-textfield__label" for="userName"><b>Nombre de usuario*</b></label>
-            <span class="mdl-textfield__error">Solo letras minúsculas, números y puntos (.)</span>
+            <span class="mdl-textfield__error">El nombre de usuario debe tener de 4 hasta 20 caracteres de longitud, alfanuméricos, se permiten guiones bajos (_) y puntos (.)</span>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
-            <input class="mdl-textfield__input" type="password" id="pwd" name="pwd">
+            <input class="mdl-textfield__input" type="password" id="pwd" name="pwd" maxlength="25" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
             <label class="mdl-textfield__label" for="pwd"><b>Contraseña*</b></label>
+            <span class="mdl-textfield__error">La contraseña debe tener al menos una letra mayúscula, al menos una letra minúscula, al menos un número o caracter especial, la longitud debe ser como mínimo de 8 caracteres.</span>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
-            <input class="mdl-textfield__input" type="text" id="email" name="email" pattern="([a-z]+[a-z1-9._-]*)@{1}([a-z1-9\.]{2,})\.([a-z]{2,3})$" maxlength="40">
+            <input class="mdl-textfield__input" type="text" id="email" name="email" pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$" maxlength="40">
             <label class="mdl-textfield__label" for="email">Email</label>
             <span class="mdl-textfield__error">Correo electrónico no permitido</span>
         </div>

@@ -4,19 +4,8 @@ session_start();
 include './db.php';
 include './errors.php';
 
-function validateRequired($valor) {
-    if (trim($valor) == '') {
-        return false;
-    } else {
-        return true;
-    }
-}
-
 function validateConntentField($regex, $valor) {
-    if (!preg_match($regex, $valor)) {
-        return false;
-    }
-    return true;
+    return preg_match($regex, $valor);
 }
 
 $companyId = filter_input(INPUT_POST, "companyId");
@@ -53,22 +42,27 @@ if (isset($_POST["isAdmin"])) {
     $isAdmin = $_POST["isAdmin"];
 }
 
-echo validateRequired($companyId);
-echo validateRequired($name);
-echo validateRequired($lastName);
-echo validateRequired($userName);
-echo validateRequired($pwd);
+$name_v2 = validateConntentField("/^[a-zñáéíóú\s]{4,30}$/", $name);
+$lastName_v2 = validateConntentField("/^[a-zñáéíóú\s]{4,30}$/", $lastName);
+$userName_v2 = validateConntentField("/^[a-z\d_.]{4,20}$/", $userName);
+$pwd_v2 = validateConntentField("/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/", $pwd);
+if($email){
+    $email_v2 = validateConntentField("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/", $email);
+}else{
+    $email_v2 = TRUE;
+}
 
-echo validateConntentField("[a-z\d.]*$", $userName);
+if($phone){
+    $phone_v2 = validateConntentField("/^\d*$/", $phone);
+}else{
+    $phone_v2 = TRUE;
+}
 
 try {
-    $stmt = $db->prepare("INSERT INTO users (companyId,name,lastName,userName,pwd,email,phone,isAdmin) VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
-    $stmt->execute(array($companyId, $name, $lastName, $userName, $pwd, $email, $phone, $isAdmin));
-    $row = $stmt->rowCount();
-    if ($row) {
-        echo "Se ingresaron los registros con exito";
-    } else {
-        echo "No se ingresaron los registros";
+    if($name_v2 && $lastName_v2 && $userName_v2 && $pwd_v2 && $email_v2 && $phone_v2) {
+        $stmt = $db->prepare("INSERT INTO users (companyId,name,lastName,userName,pwd,email,phone,isAdmin) VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
+        $stmt->execute(array($companyId, $name, $lastName, $userName, $pwd, $email, $phone, $isAdmin));
+        $row = $stmt->rowCount();
     }
 } catch (Exception $ex) {
     http_response_code(500);
