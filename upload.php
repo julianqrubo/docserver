@@ -64,7 +64,7 @@ if ($_FILES["fileToUpload"]["name"][0]) {
         } else {
             try {
                 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"][$i], $target_dir . $insertId . "." . $upload_extension)) {
-                    $stmt = $db->prepare("INSERT INTO upload_file (user,source_name,type,size,error,upload_date,path) VALUES (?, ?, ?, ?, ?, now(), ?);");
+                    $stmt = $db->prepare("INSERT INTO upload_file (user,source_name,type,size,error,upload_date,path,state) VALUES (?, ?, ?, ?, ?, now(), ?, 1);");
                     $stmt->execute(array($upload_user, $upload_source_name, $upload_type, $upload_size, $upload_error, $upload_path));
                     $insertId = $db->lastInsertId();
                     $row = $stmt->rowCount();

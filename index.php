@@ -1,9 +1,9 @@
-<?php 
-    //Para ponerlo en producción debe poner $mode = ".min";
-    $mode = "";
+<?php
+//Para ponerlo en producción debe poner $mode = ".min";
+$mode = "";
 ?>
 <!doctype html>
-<html lang="en">
+<html lang="en" style="background: rgb(63,81,181)">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -34,7 +34,11 @@
     </head>
 
     <body>
-        <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: auto; margin-right: auto; margin-top: 20%;">
+        <div style="margin-left: auto; margin-right: auto; margin-top: 2%; text-align: center">
+            <h3 style="text-align: center"><b>Repositorio de archivos<br><font color = "#33cc33">J</font><font color = "#00ccff">M</font>Salud Ocupacional</b></h3>
+            <img src='images/logoJM.png'/>
+        </div>
+        <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: auto; margin-right: auto; margin-top: 1%; margin-bottom: 5%">
             <div class="mdl-card__title">
                 <h2 class="mdl-card__title-text">Inicio de sesión</h2>
             </div>

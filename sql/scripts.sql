@@ -10,8 +10,6 @@ CREATE TABLE `company` (
   UNIQUE KEY `idx_company_documentId` (`documentId`),
   KEY `idx_company_state` (`state`)
 ) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=latin1;
-SELECT * FROM docserverjm.users;
-
 
 CREATE TABLE `users` (
   `ID` int(8) unsigned NOT NULL AUTO_INCREMENT,
@@ -38,11 +36,11 @@ CREATE TABLE `upload_file` (
   `error` varchar(100) DEFAULT NULL,
   `upload_date` datetime NOT NULL,
   `path` varchar(100) DEFAULT NULL,
+   `state` int(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
+INSERT INTO `docserverjm`.`company` (`documentId`, `name`, `address`, `phone`, `path`, `state`) VALUES (9001013042, 'jm salud ocupacional', 'calle 54 No 31-99', '6575878', 'jmsaludocupacional', 1);
 
-INSERT INTO `docserverjm`.`company` (`documentId`, `name`, `address`, `phone`, `path`) VALUES (91534697, 'nemesys', 'la casa de migue migue', '1234567', '/nemesys/data');
-
-INSERT INTO `docserverjm`.`users`(`companyId`,`name`,`lastName`,`userName`,`pwd`,`email`,`phone`,`isAdmin`)VALUES(1,'julian','curubo','julian.curubo','adivinela','julian.curubo@nemesys.com','1234567',1);
+INSERT INTO `docserverjm`.`users`(`companyId`,`name`,`lastName`,`userName`,`pwd`,`email`,`phone`,`isAdmin`)VALUES(1,'martha yaneth','vargas','adminjm','usuario1$','jm.saludocupacional@yahoo.com.ar','3107860281',1);

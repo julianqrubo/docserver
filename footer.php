@@ -33,9 +33,9 @@
 <footer class="mdl-mini-footer" style="">
     <div class="mdl-mini-footer__left-section">
         <ul class="mdl-mini-footer__link-list">
-            <li><a href="#">Ayuda</a></li>
+            <!--<li><a href="#">Ayuda</a></li>
             <li><a href="#">Terminos</a></li>
-            <li><a href="#">Acerca de</a></li>
+            <li><a href="#">Acerca de</a></li> -->
         </ul>
     </div>
 </footer>

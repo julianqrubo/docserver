@@ -34,7 +34,7 @@ if ($row) {
                         <span class = "mdl-list__item-primary-content">
                             <i class = "material-icons">attach_file</i>
                             <?php
-                            $stmt_file = $db->prepare("SELECT source_name FROM upload_file WHERE id = " . $uploadId);
+                            $stmt_file = $db->prepare("SELECT source_name FROM upload_file WHERE id = " . $uploadId . " and state = 1");
                             $stmt_file->execute();
                             $row_file = $stmt_file->fetch(PDO::FETCH_ASSOC);
                             ?>
