@@ -80,6 +80,7 @@ foreach ($rows_cbox as $id) {
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
             <label class="mdl-textfield__label"><b>Empresa*</b></label>
             <select id="companyId" name="companyId" class="mdl-textfield__input">
+                <option value=""></option>
                 <?php echo $cboxCompany; ?>
             </select>
         </div>

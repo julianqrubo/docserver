@@ -63,23 +63,21 @@ if ($_FILES["fileToUpload"]["name"][0]) {
             $resultMsg = "<p><font color='red'>El archivo " . basename($_FILES["fileToUpload"]["name"][$i]) . " no fue cargado</font></p>";
         } else {
             try {
+                $db->beginTransaction();
                 $stmt = $db->prepare("INSERT INTO upload_file (user,source_name,type,size,error,upload_date,path,state) VALUES (?, ?, ?, ?, ?, now(), ?, 1);");
                 $stmt->execute(array($upload_user, $upload_source_name, $upload_type, $upload_size, $upload_error, $upload_path));
                 $insertId = $db->lastInsertId();
-                $row = $stmt->rowCount(); // Revisar con miguel....
+                $row = $stmt->rowCount();
                 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"][$i], $target_dir . $insertId . "." . $upload_extension)) {
                     $resultMsg = "<p><font color='green'>El archivo " . basename($_FILES["fileToUpload"]["name"][$i]) . " ha sido cargado</font></p>";
+                     $db->commit();
                 } else {
-                    /*$stmtDeleteUpload = $db->prepare("delete from upload_file where id = ".$insertId.";");
-                    $stmtDeleteUpload->execute();
-                    $affected_deleteUpload = $stmtDeleteUpload->rowCount();*/ // Revisar con miguel....
+                    $db->rollBack();
                     $resultMsg = "<p><font color='red'>Ha ocurrido un error cargando el archivo " . basename($_FILES["fileToUpload"]["name"][$i]) . "</font></p>";
                 }
             } catch (Exception $exc) {
-                //echo $exc->getTraceAsString();
                 echo $resultMsg;
-                http_response_code(500);
-                echo get_error($exc->getCode(), $exc->getMessage());
+                echo $exc->getMessage();
             }
         }
         echo $resultMsg;
