@@ -206,14 +206,14 @@ $(function () {
         });
     });
 
-    var setupAutoComplete = function (id) {
+    var setupAutoComplete = function (id, url) {
         var $hidden = $(id);
         var $text = $(id + '_raw');
         var $autocomplete_div = $('<div class="autocomplete-options mdl-shadow--2dp">Opciones de autocompletado</div>');
         $autocomplete_div.insertAfter($text.parent());
         $text.on('keyup', function (e) {
             if (e.target.value.length > 0) {
-                $.get("/docserver/companiesAutoComplete.php", {q: e.target.value}, function (res) {
+                $.get(url, {q: e.target.value}, function (res) {
                     var result = $.parseJSON(res);
                     $autocomplete_div.empty();
 
@@ -234,6 +234,6 @@ $(function () {
         });
     };
 
-    setupAutoComplete("#company");
+    setupAutoComplete("#company", "/docserver/companiesAutoComplete.php");
 
 });
