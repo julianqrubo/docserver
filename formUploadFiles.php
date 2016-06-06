@@ -16,9 +16,10 @@ include './header.php';
         <script src="js/jquery-2.2.4.min.js"></script>
         <script src="js/jquery-ui-1.8.4.custom.min.js"></script>
         <script type="text/javascript">
-            $(function () {
+            /*$(function () {
                 $("#companyId").autocomplete({
-                    source: 'ajax.php',
+                    //source: 'ajax.php',
+                    source: ('Jose', 'Luis', 'Maria'),
                     select: function (event, ui) {
                         $('#companyResult').slideUp('slow', function () {
                             $('#companyResult').html(
@@ -28,7 +29,7 @@ include './header.php';
                         $('#companyResult').slideDown('slow');
                     }
                 });
-            });
+            });*/
         </script>
         <title>Cargue de archivos</title>
     </head>
