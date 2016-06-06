@@ -10,5 +10,29 @@
 }
 
 .demo-list-item {
-  width: 300px;
+    width: 300px;
+}
+
+.autocomplete-options{
+    position: absolute;
+    display: none;
+    width: 300px;
+    z-index: 100;
+    background-color: #fff;
+    margin-left: calc((100% - 300px)/2);
+}
+
+.autocomplete-options ul{
+    padding: 0px;
+}
+
+.autocomplete-options li{
+    list-style-type: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.autocomplete-options li:hover{
+    background-color: #eee;
+    font-weight: bold;
 }
