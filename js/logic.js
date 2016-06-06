@@ -205,4 +205,35 @@ $(function () {
             snackbarContainer.MaterialSnackbar.showSnackbar(data);
         });
     });
+
+    var setupAutoComplete = function (id) {
+        var $hidden = $(id);
+        var $text = $(id + '_raw');
+        var $autocomplete_div = $('<div class="autocomplete-options mdl-shadow--2dp">Opciones de autocompletado</div>');
+        $autocomplete_div.insertAfter($text.parent());
+        $text.on('keyup', function (e) {
+            if (e.target.value.length > 0) {
+                $.get("/docserver/companiesAutoComplete.php", {q: e.target.value}, function (res) {
+                    var result = $.parseJSON(res);
+                    $autocomplete_div.empty();
+
+                    var $autocomplete_options = $('<ul></ul>');
+                    $autocomplete_options.appendTo($autocomplete_div);
+                    for (var i = 0; i < result.length; i++) {
+                        var $autocomplete_option = $('<li id="' + result[i].id + '">' + result[i].name + '</li>');
+                        $autocomplete_option.on('click', function (e) {
+                            $hidden.val(e.target.getAttribute('id'));
+                            $text.val(e.target.innerText);
+                            $autocomplete_div.hide();
+                        });
+                        $autocomplete_option.appendTo($autocomplete_options);
+                    }
+                    $autocomplete_div.show();
+                });
+            }
+        });
+    };
+
+    setupAutoComplete("#company");
+
 });
