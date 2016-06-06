@@ -120,9 +120,9 @@
             <span class="mdl-textfield__error">Solo números</span>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
-            <input class="mdl-textfield__input" type="text" id="path" name="path" pattern="[a-z]*$" maxlength="30">
+            <input class="mdl-textfield__input" type="text" id="path" name="path" pattern="[a-z\d_]*$" maxlength="30">
             <label class="mdl-textfield__label" for="path"><b>Nombre de la carpeta*</b></label>
-            <span class="mdl-textfield__error">Solo letras minúsculas sin espacios ni carcateres especiales</span>
+            <span class="mdl-textfield__error">Solo alfanuméricos, se permiten guiones bajos (_)</span>
         </div>
         <div>
             <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect okCreate-button">Crear</button>

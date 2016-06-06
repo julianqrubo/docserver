@@ -37,7 +37,7 @@ if ($phone) {
 } else {
     $vPhone = TRUE;
 }
-$vPath = validateConntentField("/^[a-z]*$/", $path);
+$vPath = validateConntentField("/^[a-z\d_]*$/", $path);
 
 try {
     if($vDocumentId && $vName && $vPhone && $vPath) {
