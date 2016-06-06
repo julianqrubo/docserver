@@ -45,13 +45,6 @@ $mode = "";
 
             <div style="text-align: center;">
                 <form action="login.php" id="sigin-form">
-                    
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="company_raw" name="company_raw">
-                        <input type="hidden" id="company" name="company">
-                        <label class="mdl-textfield__label" for="company">Empresa</label>
-                    </div>
-                    
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input class="mdl-textfield__input" type="text" id="username" name="username" pattern="[A-Za-z\.@]+">
                         <label class="mdl-textfield__label" for="username">Nombre de usuario</label>

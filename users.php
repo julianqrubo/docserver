@@ -10,16 +10,6 @@ $stmt = $db->prepare("SELECT u.ID ID, c.name companyName, u.name name, u.lastNam
 $stmt->execute();
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $row_cunter = $stmt->rowCount();
-
-$stmt_cbox = $db->prepare("SELECT ID, name FROM company where state = 1 order by name asc");
-$stmt_cbox->execute();
-$rows_cbox = $stmt_cbox->fetchAll(PDO::FETCH_ASSOC);
-$row_cunter_cbox = $stmt_cbox->rowCount();
-
-$cboxCompany = "";
-foreach ($rows_cbox as $id) {
-    $cboxCompany .=" <option value='".$id['ID']."'>".$id['name']."</option>";
-}
 ?>
 
 <h3 style="text-align: center;">Usuarios</h3>
@@ -78,14 +68,11 @@ foreach ($rows_cbox as $id) {
     <h3 style="text-align: center;">Registro de usuario</h3>
     <form action="createUser.php" id="createUser-form">
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
-            <label class="mdl-textfield__label"><b>Empresa*</b></label>
-            <select id="companyId" name="companyId" class="mdl-textfield__input">
-                <option value=""></option>
-                <?php echo $cboxCompany; ?>
-            </select>
+            <input class="mdl-textfield__input" type="text" id="companyId_raw" name="companyId_raw">
+            <input type="hidden" id="companyId" name="companyId">
+            <label class="mdl-textfield__label" for="companyId">Empresa*</label>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
-            <!-- <input class="mdl-textfield__input" type="text" id="name" name="name" pattern="[a-z\s]*$" maxlength="30"> -->
             <input class="mdl-textfield__input" type="text" id="name" name="name" pattern="[a-zñáéíóú\s]{4,100}$" maxlength="100">
             <label class="mdl-textfield__label" for="name"><b>Nombre*</b></label>
             <span class="mdl-textfield__error">Solo letras minúsculas, espacios, entre 4 y 100 caracteres</span>
@@ -96,7 +83,6 @@ foreach ($rows_cbox as $id) {
             <span class="mdl-textfield__error">Solo letras minúsculas, espacios, entre 4 y 100 caracteres</span>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
-            <!--<input class="mdl-textfield__input" type="text" id="userName" name="userName" pattern="[a-z\d.]*$" maxlength="20"> -->
             <input class="mdl-textfield__input" type="text" id="userName" name="userName" pattern="[a-z\d_.]{4,20}$" maxlength="20">
             <label class="mdl-textfield__label" for="userName"><b>Nombre de usuario*</b></label>
             <span class="mdl-textfield__error">El nombre de usuario debe tener de 4 hasta 20 caracteres de longitud, alfanuméricos, se permiten guiones bajos (_) y puntos (.)</span>

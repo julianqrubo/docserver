@@ -21,7 +21,7 @@ include './header.php';
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input class="mdl-textfield__input" type="text" id="companyId_raw" name="companyId_raw">
                         <input type="hidden" id="companyId" name="companyId">
-                        <label class="mdl-textfield__label" for="companyId">Empresa</label>
+                        <label class="mdl-textfield__label" for="companyId">Empresa*</label>
                     </div>
                     <div style="margin-left: auto; margin-right: auto; margin-top: 5%;">
                         <input type="file" name="fileToUpload[]" id="fileToUpload" multiple="multiple" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">

@@ -209,7 +209,7 @@ $(function () {
     var setupAutoComplete = function (id, url) {
         var $hidden = $(id);
         var $text = $(id + '_raw');
-        var $autocomplete_div = $('<div class="autocomplete-options mdl-shadow--2dp">Opciones de autocompletado</div>');
+        var $autocomplete_div = $('<div class="autocomplete-options mdl-shadow--2dp"></div>');
         $autocomplete_div.insertAfter($text.parent());
         $text.on('keyup', function (e) {
             if (e.target.value.length > 0) {
@@ -234,6 +234,6 @@ $(function () {
         });
     };
 
-    setupAutoComplete("#company", "/docserver/companiesAutoComplete.php");
+    setupAutoComplete("#companyId", "/docserver/companiesAutoComplete.php");
 
 });
