@@ -10,7 +10,7 @@ foreach ($ids as $id) {
     $params[] = "?";
 }
 
-// Elimino los usuario de la empresa que se va a eliminar
+// Elimino los usuarios de la empresa que se va a eliminar
 $queryUsr = "delete from users where companyId in (" . join(",", $params) . ");";
 $stmtUsr = $db->prepare($queryUsr);
 $stmtUsr->execute($ids);

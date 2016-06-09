@@ -2,11 +2,8 @@
 //Para ponerlo en producción debe poner $mode = ".min";
 $mode = "";
 
-$userid = $_SESSION["__user__"];
-$name = $_SESSION['__name__'];
-$lastname = $_SESSION['__lastname__'];
+$userName = $_SESSION["__username__"];
 $isadmin = $_SESSION['__isadmin__'];
-$fullname = $name . " " . $lastname;
 ?>
 
 <!doctype html>
@@ -46,7 +43,7 @@ $fullname = $name . " " . $lastname;
             <header class="mdl-layout__header">
                 <div class="mdl-layout__header-row">
                     <!-- Title -->
-                    <span class="mdl-layout-title"><?php echo $fullname; ?></span>
+                    <span class="mdl-layout-title"><?php echo $userName; ?></span>
                     <!-- Add spacer, to align navigation to the right -->
                     <div class="mdl-layout-spacer"></div>
                     <!-- Navigation. We hide it in small screens. -->
@@ -57,11 +54,12 @@ $fullname = $name . " " . $lastname;
                 </div>
             </header>
             <div class="mdl-layout__drawer">
-                <span class="mdl-layout-title"><?php echo $fullname; ?></span>
+                <span class="mdl-layout-title">Menú de opciones</span>
                 <nav class="mdl-navigation">
                     <?php if ($isadmin == 1) { ?>
                         <a class="mdl-navigation__link" href="companies.php">Empresas</a>
                         <a class="mdl-navigation__link" href="users.php">Usuarios</a>
+                        <a class="mdl-navigation__link" href="classifier.php">Clasificadores</a>
                         <a class="mdl-navigation__link" href="admfiles.php">Archivos</a>
                         <a class="mdl-navigation__link" href="formUploadFiles.php">Cargue de archivos</a>
                     <?php } else { ?>

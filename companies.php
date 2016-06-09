@@ -1,31 +1,31 @@
 <?php
-    session_start();
-    if (!isset($_SESSION["__user__"])) {
-        header('Location: index.php');
-        exit;
-    }
-    include './header.php';
-    include './db.php';
-    $stmt = $db->prepare("SELECT ID, documentId, name, address, phone, path, state FROM company order by state asc, name asc, documentId asc");
-    $stmt->execute();
-    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $row_cunter = $stmt->rowCount();
+session_start();
+if (!isset($_SESSION["__user__"])) {
+    header('Location: index.php');
+    exit;
+}
+include './header.php';
+include './db.php';
+$stmt = $db->prepare("SELECT ID, documentId, name, address, phone, email, path, state FROM company order by state asc, name asc, documentId asc");
+$stmt->execute();
+$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$row_cunter = $stmt->rowCount();
 ?>
+
 <h3 style="text-align: center;">Empresas</h3>
 
-<div style="width: 730px; margin: auto;">
+<div style="width: 1040px; margin: auto;">
     <div style="text-align: right; padding-bottom: 20px;">
         <button id="create-companies-button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
             Crear
         </button>
-         <button id="changeStatus-companies-button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+        <button id="changeStatus-companies-button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
             Cambiar estado
         </button>
         <button id="delete-companies-button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
             Eliminar
         </button>
     </div>
-
     <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="width: 600px;" id="companies-data-table">
         <thead>
             <tr>
@@ -38,6 +38,7 @@
                 <th class="mdl-data-table__cell--non-numeric">Nombre</th>
                 <th class="mdl-data-table__cell--non-numeric">Dirección</th>
                 <th class="mdl-data-table__cell--non-numeric">Teléfono</th>
+                <th class="mdl-data-table__cell--non-numeric">Correo</th>
                 <th class="mdl-data-table__cell--non-numeric">Directorio</th>
                 <th class="mdl-data-table__cell--non-numeric">Estado</th>
             </tr>
@@ -56,6 +57,7 @@
                     <td class="mdl-data-table__cell--non-numeric"><?php echo $row["name"]; ?></td>
                     <td class="mdl-data-table__cell--non-numeric"><?php echo $row["address"]; ?></td>
                     <td class="mdl-data-table__cell--non-numeric"><?php echo $row["phone"]; ?></td>
+                    <td class="mdl-data-table__cell--non-numeric"><?php echo $row["email"]; ?></td>
                     <td class="mdl-data-table__cell--non-numeric"><?php echo $row["path"]; ?></td>
                     <td class="mdl-data-table__cell--non-numeric"><?php echo $row["state"] == 1 ? '<i class="material-icons">done</i>' : '<i class="material-icons">clear</i>'; ?></td>
                 </tr>
@@ -72,7 +74,7 @@
             Realmente desea eliminar los registros seleccionados?
         </p>
     </div>
-    
+
     <div class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="display: none;"></div>
 
     <div class="mdl-dialog__actions">
@@ -88,7 +90,7 @@
             Realmente desea cambiar el estado a los empresas seleccionadas?
         </p>
     </div>
-    
+
     <div class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="display: none;"></div>
 
     <div class="mdl-dialog__actions">
@@ -101,14 +103,14 @@
     <h3 style="text-align: center;">Registro de empresa</h3>
     <form action="createCompany.php" id="createCompany-form">
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
-            <input class="mdl-textfield__input" type="text" id="documentId" name="documentId" pattern="^\d*$" maxlength="20">
-            <label class="mdl-textfield__label" for="companyId"><b>NIT*</b></label>
+            <input class="mdl-textfield__input" type="text" id="documentId" name="documentId" pattern="^\d*$" maxlength="10">
+            <label class="mdl-textfield__label" for="documentId"><b>NIT</b></label>
             <span class="mdl-textfield__error">Solo números</span>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
-            <input class="mdl-textfield__input" type="text" id="name" name="name" pattern="[a-zñáéíóú\s]{4,100}$" maxlength="100">
+            <input class="mdl-textfield__input" type="text" id="name" name="name" pattern="[a-zA-ZñÑáÁéÉíÍóÓúÚ\d\s]{4,100}$" maxlength="100">
             <label class="mdl-textfield__label" for="name"><b>Nombre*</b></label>
-            <span class="mdl-textfield__error">Solo letras minúsculas, espacios, entre 4 y 100 caracteres</span>
+            <span class="mdl-textfield__error">Solo letras mayúsculas, espacios y números, entre 4 y 100 caracteres</span>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
             <input class="mdl-textfield__input" type="text" id="address" name="address" maxlength="100">
@@ -120,7 +122,12 @@
             <span class="mdl-textfield__error">Solo números</span>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
-            <input class="mdl-textfield__input" type="text" id="path" name="path" pattern="[a-z\d_]*$" maxlength="30">
+            <input class="mdl-textfield__input" type="text" id="email" name="email" pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$" maxlength="40">
+            <label class="mdl-textfield__label" for="email">Correo</label>
+            <span class="mdl-textfield__error">Correo electrónico no permitido</span>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
+            <input class="mdl-textfield__input" type="text" id="path" name="path" pattern="[a-z\d_]*$" maxlength="100">
             <label class="mdl-textfield__label" for="path"><b>Nombre de la carpeta*</b></label>
             <span class="mdl-textfield__error">Solo alfanuméricos, se permiten guiones bajos (_)</span>
         </div>
@@ -132,5 +139,5 @@
 </dialog>
 
 <?php
-    include './footer.php';
+include './footer.php';
 ?>
