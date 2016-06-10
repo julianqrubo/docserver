@@ -6,7 +6,7 @@ if (!isset($_SESSION["__user__"])) {
 }
 include './header.php';
 include './db.php';
-$stmt = $db->prepare("SELECT cl.ID ID, c.name companyName, cl.name classifier FROM company c, classifier cl where c.ID = cl.companyId order by c.name asc, cl.name asc");
+$stmt = $db->prepare("SELECT cl.ID ID, c.name companyName, cl.name classifier FROM company c, classifier cl where c.ID = cl.companyId and cl.state = 1 order by c.name asc, cl.name asc");
 $stmt->execute();
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $row_cunter = $stmt->rowCount();

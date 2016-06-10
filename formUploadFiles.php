@@ -23,6 +23,11 @@ include './header.php';
                         <input type="hidden" id="companyId" name="companyId">
                         <label class="mdl-textfield__label" for="companyId">Empresa*</label>
                     </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="classifierId_raw" name="classifierId_raw">
+                        <input type="hidden" id="classifierId" name="classifierId">
+                        <label class="mdl-textfield__label" for="classifierId">Clasificador</label>
+                    </div>
                     <div style="margin-left: auto; margin-right: auto; margin-top: 5%;">
                         <input type="file" name="fileToUpload[]" id="fileToUpload" multiple="multiple" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
                         <input type="submit" value="Cargar archivo" name="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">

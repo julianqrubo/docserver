@@ -242,5 +242,6 @@ $(function () {
     };
 
     setupAutoComplete("#companyId", "/docserver/companiesAutoComplete.php");
+    setupAutoComplete("#classifierId", "/docserver/classifierAutoComplete.php");
 
 });

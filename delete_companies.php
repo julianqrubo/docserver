@@ -17,6 +17,13 @@ $stmtUsr->execute($ids);
 $affected_rowsUsr = $stmtUsr->rowCount();
 echo $affected_rowsUsr;
 
+//Inactivo los clasificadores de la empresa
+$queryUpdClass = "update classifier set state = 2 where companyId = ?;";
+$stmtUpdClass = $db->prepare($queryUpdClass);
+$stmtUpdClass->execute(array($id));
+$affected_rowsUpdClass = $stmtUpdClass->rowCount();
+echo $affected_rowsUpdClass;
+
 // Elimino las empresas
 $query = "DELETE FROM company WHERE ID IN (" . join(",", $params) . ")";
 $stmt = $db->prepare($query);

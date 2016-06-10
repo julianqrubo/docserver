@@ -39,6 +39,7 @@ CREATE TABLE `classifier` (
 CREATE TABLE `upload_file` (
     `ID` int(8) unsigned NOT NULL AUTO_INCREMENT,
     `user` int(8) NOT NULL,
+    `companyId` int(8) NOT NULL,
     `classifierId` int(8) NOT NULL,
     `source_name` varchar(100) NOT NULL,
     `type` varchar(100) DEFAULT NULL,

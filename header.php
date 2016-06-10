@@ -60,8 +60,9 @@ $isadmin = $_SESSION['__isadmin__'];
                         <a class="mdl-navigation__link" href="companies.php">Empresas</a>
                         <a class="mdl-navigation__link" href="users.php">Usuarios</a>
                         <a class="mdl-navigation__link" href="classifier.php">Clasificadores</a>
-                        <a class="mdl-navigation__link" href="admfiles.php">Archivos</a>
                         <a class="mdl-navigation__link" href="formUploadFiles.php">Cargue de archivos</a>
+                        <a class="mdl-navigation__link" href="formDeleteFiles.php">Eliminación de Archivos</a>
+                        <a class="mdl-navigation__link" href="admfiles.php">Explorador de Archivos</a>
                     <?php } else { ?>
                         <a class="mdl-navigation__link" href="files.php">Archivos</a>
                     <?php } ?>
