@@ -14,7 +14,7 @@ $row_cunter = $stmt->rowCount();
 
 <h3 style="text-align: center;">Empresas</h3>
 
-<div style="width: 1040px; margin: auto;">
+<div style="width: 95%; margin: auto;">
     <div style="text-align: right; padding-bottom: 20px;">
         <button id="create-companies-button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
             Crear
@@ -26,21 +26,21 @@ $row_cunter = $stmt->rowCount();
             Eliminar
         </button>
     </div>
-    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="width: 600px;" id="companies-data-table">
+    <table class="mdl-data-table2 mdl-js-data-table mdl-shadow--2dp" style="width: 100%;" id="companies-data-table">
         <thead>
             <tr>
                 <th>
-                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select" for="company-table-header">
+                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table2__select" for="company-table-header">
                         <input type="checkbox" id="company-table-header" class="mdl-checkbox__input" />
                     </label>
                 </th>
                 <th>Nit</th>
-                <th class="mdl-data-table__cell--non-numeric">Nombre</th>
-                <th class="mdl-data-table__cell--non-numeric">Dirección</th>
-                <th class="mdl-data-table__cell--non-numeric">Teléfono</th>
-                <th class="mdl-data-table__cell--non-numeric">Correo</th>
-                <th class="mdl-data-table__cell--non-numeric">Directorio</th>
-                <th class="mdl-data-table__cell--non-numeric">Estado</th>
+                <th class="mdl-data-table2__cell--non-numeric">Nombre</th>
+                <th class="mdl-data-table2__cell--non-numeric">Dirección</th>
+                <th class="mdl-data-table2__cell--non-numeric">Teléfono</th>
+                <th class="mdl-data-table2__cell--non-numeric">Correo</th>
+                <th class="mdl-data-table2__cell--non-numeric">Directorio</th>
+                <th class="mdl-data-table2__cell--non-numeric">Estado</th>
             </tr>
         </thead>
         <tbody>
@@ -49,17 +49,17 @@ $row_cunter = $stmt->rowCount();
                 ?>
                 <tr>
                     <td>
-                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select" for="companies_row_<?php echo $row['ID']; ?>">
+                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table2__select" for="companies_row_<?php echo $row['ID']; ?>">
                             <input type="checkbox" id="companies_row_<?php echo $row['ID']; ?>" class="mdl-checkbox__input" />
                         </label>
                     </td>
                     <td><?php echo $row["documentId"]; ?></td>
-                    <td class="mdl-data-table__cell--non-numeric"><?php echo $row["name"]; ?></td>
-                    <td class="mdl-data-table__cell--non-numeric"><?php echo $row["address"]; ?></td>
-                    <td class="mdl-data-table__cell--non-numeric"><?php echo $row["phone"]; ?></td>
-                    <td class="mdl-data-table__cell--non-numeric"><?php echo $row["email"]; ?></td>
-                    <td class="mdl-data-table__cell--non-numeric"><?php echo $row["path"]; ?></td>
-                    <td class="mdl-data-table__cell--non-numeric"><?php echo $row["state"] == 1 ? '<i class="material-icons">done</i>' : '<i class="material-icons">clear</i>'; ?></td>
+                    <td class="mdl-data-table2__cell--non-numeric"><?php echo $row["name"]; ?></td>
+                    <td class="mdl-data-table2__cell--non-numeric"><?php echo $row["address"]; ?></td>
+                    <td class="mdl-data-table2__cell--non-numeric"><?php echo $row["phone"]; ?></td>
+                    <td class="mdl-data-table2__cell--non-numeric"><?php echo $row["email"]; ?></td>
+                    <td class="mdl-data-table2__cell--non-numeric"><?php echo $row["path"]; ?></td>
+                    <td class="mdl-data-table2__cell--non-numeric"><?php echo $row["state"] == 1 ? '<i class="material-icons">done</i>' : '<i class="material-icons">clear</i>'; ?></td>
                 </tr>
             <?php } ?>
         </tbody>
@@ -110,7 +110,7 @@ $row_cunter = $stmt->rowCount();
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
             <input class="mdl-textfield__input" type="text" id="name" name="name" pattern="[a-zA-ZñÑáÁéÉíÍóÓúÚ\d\s]{4,100}$" maxlength="100">
             <label class="mdl-textfield__label" for="name"><b>Nombre*</b></label>
-            <span class="mdl-textfield__error">Solo letras mayúsculas, espacios y números, entre 4 y 100 caracteres</span>
+            <span class="mdl-textfield__error">Solo alfanuméricos, espacios y números, entre 4 y 100 caracteres</span>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
             <input class="mdl-textfield__input" type="text" id="address" name="address" maxlength="100">

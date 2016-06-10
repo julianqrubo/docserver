@@ -63,7 +63,7 @@ $row_cunter = $stmt->rowCount();
             <label class="mdl-textfield__label" for="companyId">Empresa*</label>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
-            <input class="mdl-textfield__input" type="text" id="name" name="name" pattern="[a-zñáéíóú\s]{4,100}$" maxlength="100">
+            <input class="mdl-textfield__input" type="text" id="name" name="name" pattern="[a-z\d_]*$" maxlength="100">
             <label class="mdl-textfield__label" for="name"><b>Nombre*</b></label>
             <span class="mdl-textfield__error">Solo letras minúsculas, espacios, entre 4 y 100 caracteres</span>
         </div>

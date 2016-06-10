@@ -5,10 +5,13 @@ $(function () {
             setup_delete_dialog(concept, on_ok);
             if (concept == "companies") {
                 setup_change_dialog(concept, on_ok);
+                var headerCheckbox = table.querySelector('thead .mdl-data-table2__select input');
+                var boxes = table.querySelectorAll('tbody .mdl-data-table2__select');
+            } else {
+                var headerCheckbox = table.querySelector('thead .mdl-data-table__select input');
+                var boxes = table.querySelectorAll('tbody .mdl-data-table__select');
             }
             setup_create_dialog(concept, on_okCreate);
-            var headerCheckbox = table.querySelector('thead .mdl-data-table__select input');
-            var boxes = table.querySelectorAll('tbody .mdl-data-table__select');
             var headerCheckHandler = function (event) {
                 if (event.target.checked) {
                     for (var i = 0, length = boxes.length; i < length; i++) {
@@ -171,13 +174,17 @@ $(function () {
     var changeStatusCompanyDialog = document.querySelector('#changeStatus-companies-dialog');
     var createUserDialog = document.querySelector('#create-users-dialog');
     var deleteUserDialog = document.querySelector('#delete-users-dialog');
+    var createClassifierDialog = document.querySelector('#create-classifier-dialog');
+    var deleteClassifierDialog = document.querySelector('#delete-classifier-dialog');
 
     if (createCompanyDialog || deleteCompanyDialog || changeStatusCompanyDialog) {
         conceptType = "companies";
     }
-
     if (createUserDialog || deleteUserDialog) {
         conceptType = "users";
+    }
+    if (createClassifierDialog || deleteClassifierDialog) {
+        conceptType = "classifier";
     }
     setup_data_table(conceptType, function (sels, action) {
         $.post(action, {ids: sels.join(',')}, function () {
