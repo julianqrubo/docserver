@@ -1,12 +1,11 @@
 <?php
 
 include './db.php';
-$infoClassifier = filter_input(INPUT_GET, "q");
+$companyId = filter_input(INPUT_GET, "companyId");
+$infoClassifier = "%".filter_input(INPUT_GET, "q")."%";
 
-//este query sería pasandole el id de la empresa pero no se como pasarle el id de la empresa
-//$stmt = $db->prepare("SELECT ID, name FROM classifier where companyId = ? state = 1 and lower(name) like '%" . $infoClassifier . "%' order by name asc");
-$stmt = $db->prepare("SELECT ID, name FROM classifier where state = 1 and lower(name) like '%" . $infoClassifier . "%' order by name asc");
-$stmt->execute();
+$stmt = $db->prepare("SELECT ID, name FROM classifier where companyId = ? and state = 1 and lower(name) like lower(?) order by name asc");
+$stmt->execute(array($companyId, $infoClassifier));
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $row_cunter = $stmt->rowCount();
 $datos = array();

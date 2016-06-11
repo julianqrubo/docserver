@@ -5,12 +5,9 @@ $(function () {
             setup_delete_dialog(concept, on_ok);
             if (concept == "companies") {
                 setup_change_dialog(concept, on_ok);
-                var headerCheckbox = table.querySelector('thead .mdl-data-table2__select input');
-                var boxes = table.querySelectorAll('tbody .mdl-data-table2__select');
-            } else {
-                var headerCheckbox = table.querySelector('thead .mdl-data-table__select input');
-                var boxes = table.querySelectorAll('tbody .mdl-data-table__select');
             }
+            var headerCheckbox = table.querySelector('thead .mdl-data-table__select input');
+            var boxes = table.querySelectorAll('tbody .mdl-data-table__select');
             setup_create_dialog(concept, on_okCreate);
             var headerCheckHandler = function (event) {
                 if (event.target.checked) {
@@ -213,14 +210,24 @@ $(function () {
         });
     });
 
-    var setupAutoComplete = function (id, url) {
+    var setupAutoComplete = function (id, url, qs) {
         var $hidden = $(id);
         var $text = $(id + '_raw');
         var $autocomplete_div = $('<div class="autocomplete-options mdl-shadow--2dp"></div>');
         $autocomplete_div.insertAfter($text.parent());
         $text.on('keyup', function (e) {
             if (e.target.value.length > 0) {
-                $.get(url, {q: e.target.value}, function (res) {
+                var fullqs = {q: e.target.value};
+                if (qs) {
+                    for (var k in qs) {
+                        if (qs[k].indexOf("#") === 0) {
+                            fullqs[k] = $(qs[k]).val();
+                        } else {
+                            fullqs[k] = qs[k];
+                        }
+                    }
+                }
+                $.get(url, fullqs, function (res) {
                     var result = $.parseJSON(res);
                     $autocomplete_div.empty();
 
@@ -242,6 +249,6 @@ $(function () {
     };
 
     setupAutoComplete("#companyId", "/docserver/companiesAutoComplete.php");
-    setupAutoComplete("#classifierId", "/docserver/classifierAutoComplete.php");
+    setupAutoComplete("#classifierId", "/docserver/classifierAutoComplete.php", {companyId: "#companyId"});
 
 });

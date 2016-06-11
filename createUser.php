@@ -9,7 +9,6 @@ function validateConntentField($regex, $valor) {
 }
 
 $companyId = filter_input(INPUT_POST, "companyId");
-//$userName = filter_input(INPUT_POST, "userName");
 $pwd = filter_input(INPUT_POST, "pwd");
 $isAdmin = 1;
 

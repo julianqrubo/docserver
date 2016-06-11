@@ -26,21 +26,20 @@ $row_cunter = $stmt->rowCount();
             Eliminar
         </button>
     </div>
-    <table class="mdl-data-table2 mdl-js-data-table mdl-shadow--2dp" style="width: 100%;" id="companies-data-table">
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="width: 100%;" id="companies-data-table">
         <thead>
             <tr>
                 <th>
-                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table2__select" for="company-table-header">
+                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select" for="company-table-header">
                         <input type="checkbox" id="company-table-header" class="mdl-checkbox__input" />
                     </label>
                 </th>
                 <th>Nit</th>
-                <th class="mdl-data-table2__cell--non-numeric">Nombre</th>
-                <th class="mdl-data-table2__cell--non-numeric">Dirección</th>
-                <th class="mdl-data-table2__cell--non-numeric">Teléfono</th>
-                <th class="mdl-data-table2__cell--non-numeric">Correo</th>
-                <th class="mdl-data-table2__cell--non-numeric">Directorio</th>
-                <th class="mdl-data-table2__cell--non-numeric">Estado</th>
+                <th class="mdl-data-table__cell--non-numeric">Nombre</th>
+                <th class="mdl-data-table__cell--non-numeric">Teléfono</th>
+                <th class="mdl-data-table__cell--non-numeric">Correo</th>
+                <th class="mdl-data-table__cell--non-numeric">Directorio</th>
+                <th class="mdl-data-table__cell--non-numeric">Estado</th>
             </tr>
         </thead>
         <tbody>
@@ -49,17 +48,24 @@ $row_cunter = $stmt->rowCount();
                 ?>
                 <tr>
                     <td>
-                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table2__select" for="companies_row_<?php echo $row['ID']; ?>">
+                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select" for="companies_row_<?php echo $row['ID']; ?>">
                             <input type="checkbox" id="companies_row_<?php echo $row['ID']; ?>" class="mdl-checkbox__input" />
                         </label>
                     </td>
                     <td><?php echo $row["documentId"]; ?></td>
-                    <td class="mdl-data-table2__cell--non-numeric"><?php echo $row["name"]; ?></td>
-                    <td class="mdl-data-table2__cell--non-numeric"><?php echo $row["address"]; ?></td>
-                    <td class="mdl-data-table2__cell--non-numeric"><?php echo $row["phone"]; ?></td>
-                    <td class="mdl-data-table2__cell--non-numeric"><?php echo $row["email"]; ?></td>
-                    <td class="mdl-data-table2__cell--non-numeric"><?php echo $row["path"]; ?></td>
-                    <td class="mdl-data-table2__cell--non-numeric"><?php echo $row["state"] == 1 ? '<i class="material-icons">done</i>' : '<i class="material-icons">clear</i>'; ?></td>
+                    <td class="mdl-data-table__cell--non-numeric">
+                        <span id="companyName<?php echo $row['ID']; ?>">
+                            <?php echo $row["name"]; ?>
+                        </span>
+                        <div class="mdl-tooltip mdl-tooltip--large" for="companyName<?php echo $row['ID']; ?>">
+                            <?php echo $row["address"]; ?>
+                        </div>
+                    </td>
+                    <!--<td class="mdl-data-table__cell--non-numeric"><?php echo $row["address"]; ?></td>-->
+                    <td class="mdl-data-table__cell--non-numeric"><?php echo $row["phone"]; ?></td>
+                    <td class="mdl-data-table__cell--non-numeric"><?php echo $row["email"]; ?></td>
+                    <td class="mdl-data-table__cell--non-numeric"><?php echo $row["path"]; ?></td>
+                    <td class="mdl-data-table__cell--non-numeric"><?php echo $row["state"] == 1 ? '<i class="material-icons">done</i>' : '<i class="material-icons">clear</i>'; ?></td>
                 </tr>
             <?php } ?>
         </tbody>

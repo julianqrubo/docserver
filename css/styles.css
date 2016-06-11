@@ -36,3 +36,12 @@
     background-color: #eee;
     font-weight: bold;
 }
+
+.mdl-data-table{
+    position: relative;
+    border: 1px solid rgba(0,0,0,.12);
+    border-collapse: collapse;
+    white-space: normal;
+    font-size: 13px;
+    background-color: #fff;
+}

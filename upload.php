@@ -10,6 +10,7 @@ include './db.php';
 include './errors.php';
 //Recibo el id de la empresa a la que le voy a cargar los files
 $companyId = $_POST["companyId"];
+$classifierId = $_POST["classifierId"];
 $stmt = $db->prepare("SELECT path FROM company WHERE id = ?");
 $stmt->execute(array($companyId));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -63,7 +64,7 @@ if ($_FILES["fileToUpload"]["name"][0]) {
             try {
                 $db->beginTransaction();
                 $stmt = $db->prepare("INSERT INTO upload_file (user,source_name,companyId,classifierId,type,size,upload_date,path,state) VALUES (?, ?, ?, ?, ?, ?, now(), ?, 1);");
-                $stmt->execute(array($upload_user, $upload_source_name, $companyId, 1, $upload_type, $upload_size, $upload_path));
+                $stmt->execute(array($upload_user, $upload_source_name, $companyId, $classifierId, $upload_type, $upload_size, $upload_path));
                 $insertId = $db->lastInsertId();
                 $row = $stmt->rowCount();
                 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"][$i], $target_dir . $insertId . "." . $upload_extension)) {

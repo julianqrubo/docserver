@@ -15,16 +15,16 @@ include './header.php';
     </head>
     <body>
         <h3 style="text-align: center;">Cargue de archivos</h3>
-        <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: auto; margin-right: auto; margin-top: 5%; width: 500px">
+        <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: auto; margin-right: auto; margin-top: 5%; width: 500px; overflow: visible;">
             <div style="text-align: center;">
                 <form method="POST" action="upload.php" id="uploadFiles-form" enctype="multipart/form-data">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="companyId_raw" name="companyId_raw">
+                        <input class="mdl-textfield__input" type="text" id="companyId_raw" name="companyId_raw" autocomplete="off">
                         <input type="hidden" id="companyId" name="companyId">
                         <label class="mdl-textfield__label" for="companyId">Empresa*</label>
                     </div>
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="classifierId_raw" name="classifierId_raw">
+                        <input class="mdl-textfield__input" type="text" id="classifierId_raw" name="classifierId_raw" autocomplete="off">
                         <input type="hidden" id="classifierId" name="classifierId">
                         <label class="mdl-textfield__label" for="classifierId">Clasificador</label>
                     </div>
