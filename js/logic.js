@@ -256,4 +256,26 @@ $(function () {
     setupAutoComplete("#companyId", "/docserver/companiesAutoComplete.php");
     setupAutoComplete("#classifierId", "/docserver/classifierAutoComplete.php", {companyId: "#companyId"});
 
+
+    $('#filter_classiferId').on('change', function (e) {
+        var $lis = $(e.target).parent().parent().next().children();
+        for (var i = 0; i < $lis.length; i++) {
+            var $li = $($lis[i]);
+            if (e.target.value) {
+                if (e.target.value === $li.attr('classifier')) {
+                    $li.show();
+                } else {
+                    $li.hide();
+                }
+            } else {
+                if ($li.attr('classifier')) {
+                    $li.hide();
+                } else {
+                    $li.show();
+                }
+            }
+        }
+        console.log();
+    });
+
 });
