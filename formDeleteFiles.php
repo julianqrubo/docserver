@@ -11,7 +11,7 @@ $stmt = $db->prepare("SELECT uf.ID, u.username, c.name companyName, cl.name clas
                         inner join company c on (uf.companyId = c.ID)
                         inner join users u on (uf.companyId = u.companyId)
                         inner join classifier cl on (uf.companyId = cl.companyId and uf.classifierId = cl.ID)
-                        where cl.state = 1 and uf.state = 1 order by cl.name asc, uf.upload_date");
+                        where cl.state = 1 and uf.state = 1 order by c.name asc, uf.upload_date asc, cl.name asc");
 $stmt->execute();
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $row_cunter = $stmt->rowCount();

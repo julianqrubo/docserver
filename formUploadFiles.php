@@ -21,7 +21,7 @@ include './header.php';
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input class="mdl-textfield__input" type="text" id="companyId_raw" name="companyId_raw" autocomplete="off">
                         <input type="hidden" id="companyId" name="companyId">
-                        <label class="mdl-textfield__label" for="companyId">Empresa*</label>
+                        <label class="mdl-textfield__label" for="companyId"><b>Empresa*</b></label>
                     </div>
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input class="mdl-textfield__input" type="text" id="classifierId_raw" name="classifierId_raw" autocomplete="off">

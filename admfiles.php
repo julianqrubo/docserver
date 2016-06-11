@@ -48,8 +48,9 @@ if (is_dir($ruta)) {
 function get_fileNameById($uploadId) {
     include './db.php';
     if ($uploadId) {
-        $stmt_file = $db->prepare("SELECT source_name FROM upload_file WHERE id = " . $uploadId. " and state = 1");
-        $stmt_file->execute();
+        //$stmt_file = $db->prepare("SELECT source_name FROM upload_file WHERE id = " . $uploadId. " and state = 1");
+        $stmt_file = $db->prepare("SELECT source_name FROM upload_file WHERE id = ? and state = 1");
+        $stmt_file->execute(array($uploadId));
         $row_file = $stmt_file->fetch(PDO::FETCH_ASSOC);
         return $row_file["source_name"];
     }

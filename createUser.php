@@ -24,8 +24,8 @@ if (isset($_POST["isAdmin"])) {
 
 $pwd_v2 = validateConntentField("/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/", $pwd);
 
-$stmt_getCompanyDocumentId = $db->prepare("SELECT documentId FROM company WHERE ID = ".$companyId);
-$stmt_getCompanyDocumentId->execute();
+$stmt_getCompanyDocumentId = $db->prepare("SELECT documentId FROM company WHERE ID = ?");
+$stmt_getCompanyDocumentId->execute(array($companyId));
 $row_getCompanyDocumentId = $stmt_getCompanyDocumentId->fetch(PDO::FETCH_ASSOC);
 
 try {

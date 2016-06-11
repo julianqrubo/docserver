@@ -34,8 +34,8 @@ if ($row) {
                         <span class = "mdl-list__item-primary-content">
                             <i class = "material-icons">attach_file</i>
                             <?php
-                            $stmt_file = $db->prepare("SELECT source_name FROM upload_file WHERE id = " . $uploadId . " and state = 1");
-                            $stmt_file->execute();
+                            $stmt_file = $db->prepare("SELECT source_name FROM upload_file WHERE id = ? and state = 1");
+                            $stmt_file->execute(array($uploadId));
                             $row_file = $stmt_file->fetch(PDO::FETCH_ASSOC);
                             ?>
                             <a href = "downloadFile.php?path=<?php echo $path . "/" . $ids; ?>&filename=<?php echo $row_file['source_name']; ?>" id = "download_text"><?php echo $row_file['source_name']; ?></a>

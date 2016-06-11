@@ -11,6 +11,9 @@ include './errors.php';
 //Recibo el id de la empresa a la que le voy a cargar los files
 $companyId = $_POST["companyId"];
 $classifierId = $_POST["classifierId"];
+if (empty($classifierId)) {
+    $classifierId = NULL;
+}
 $stmt = $db->prepare("SELECT path FROM company WHERE id = ?");
 $stmt->execute(array($companyId));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);

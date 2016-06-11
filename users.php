@@ -6,7 +6,7 @@ if (!isset($_SESSION["__user__"])) {
 }
 include './header.php';
 include './db.php';
-$stmt = $db->prepare("SELECT u.ID ID, c.name companyName, u.userName userName, u.isAdmin isAdmin FROM users u, company c where u.companyId = c.ID order by isAdmin asc, userName asc");
+$stmt = $db->prepare("SELECT u.ID ID, c.name companyName, u.userName userName, u.isAdmin isAdmin FROM users u, company c where u.companyId = c.ID order by isAdmin asc, c.name asc, userName asc");
 $stmt->execute();
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $row_cunter = $stmt->rowCount();
@@ -62,7 +62,7 @@ $row_cunter = $stmt->rowCount();
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
             <input class="mdl-textfield__input" type="text" id="companyId_raw" name="companyId_raw">
             <input type="hidden" id="companyId" name="companyId">
-            <label class="mdl-textfield__label" for="companyId">Empresa*</label>
+            <label class="mdl-textfield__label" for="companyId"><b>Empresa*</b></label>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
             <input class="mdl-textfield__input" type="password" id="pwd" name="pwd" maxlength="25" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">

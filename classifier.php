@@ -60,7 +60,7 @@ $row_cunter = $stmt->rowCount();
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
             <input class="mdl-textfield__input" type="text" id="companyId_raw" name="companyId_raw">
             <input type="hidden" id="companyId" name="companyId">
-            <label class="mdl-textfield__label" for="companyId">Empresa*</label>
+            <label class="mdl-textfield__label" for="companyId"><b>Empresa*</b></label>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
             <input class="mdl-textfield__input" type="text" id="name" name="name" pattern="[a-z\d_]*$" maxlength="100">
