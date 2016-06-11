@@ -21,7 +21,7 @@ $row_cunter = $stmt->rowCount();
 
 <div style="width: 95%; margin: auto;">
     <div style="text-align: right; padding-bottom: 20px;">
-        <button id="delete-files-button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+        <button id="delete-file-button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
             Eliminar
         </button>
     </div>

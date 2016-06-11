@@ -173,6 +173,8 @@ $(function () {
     var deleteUserDialog = document.querySelector('#delete-users-dialog');
     var createClassifierDialog = document.querySelector('#create-classifier-dialog');
     var deleteClassifierDialog = document.querySelector('#delete-classifier-dialog');
+    var createFileDialog = document.querySelector('#create-file-dialog');
+    var deleteFileDialog = document.querySelector('#delete-file-dialog');
 
     if (createCompanyDialog || deleteCompanyDialog || changeStatusCompanyDialog) {
         conceptType = "companies";
@@ -182,6 +184,9 @@ $(function () {
     }
     if (createClassifierDialog || deleteClassifierDialog) {
         conceptType = "classifier";
+    }
+    if (createFileDialog || deleteFileDialog) {
+        conceptType = "file";
     }
     setup_data_table(conceptType, function (sels, action) {
         $.post(action, {ids: sels.join(',')}, function () {

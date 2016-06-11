@@ -36,8 +36,8 @@ $row_cunter = $stmt->rowCount();
                 </th>
                 <th>Nit</th>
                 <th class="mdl-data-table__cell--non-numeric">Nombre</th>
-                <th class="mdl-data-table__cell--non-numeric">Teléfono</th>
-                <th class="mdl-data-table__cell--non-numeric">Correo</th>
+                <!--<th class="mdl-data-table__cell--non-numeric">Teléfono</th>-->
+                <!--<th class="mdl-data-table__cell--non-numeric">Correo</th>-->
                 <th class="mdl-data-table__cell--non-numeric">Directorio</th>
                 <th class="mdl-data-table__cell--non-numeric">Estado</th>
             </tr>
@@ -57,13 +57,17 @@ $row_cunter = $stmt->rowCount();
                         <span id="companyName<?php echo $row['ID']; ?>">
                             <?php echo $row["name"]; ?>
                         </span>
-                        <div class="mdl-tooltip mdl-tooltip--large" for="companyName<?php echo $row['ID']; ?>">
-                            <?php echo $row["address"]; ?>
+                        <div class="mdl-tooltip" for="companyName<?php echo $row['ID']; ?>">
+                            <?php echo "Dirección: " . $row["address"]; ?>
+                            <br>
+                            <?php echo "Teléfono: " . $row["phone"]; ?>
+                            <br>
+                            <?php echo "Correo: " . $row["email"]; ?>
                         </div>
                     </td>
                     <!--<td class="mdl-data-table__cell--non-numeric"><?php echo $row["address"]; ?></td>-->
-                    <td class="mdl-data-table__cell--non-numeric"><?php echo $row["phone"]; ?></td>
-                    <td class="mdl-data-table__cell--non-numeric"><?php echo $row["email"]; ?></td>
+                    <!--<td class="mdl-data-table__cell--non-numeric"><?php echo $row["phone"]; ?></td>-->
+                    <!--<td class="mdl-data-table__cell--non-numeric"><?php echo $row["email"]; ?></td>-->
                     <td class="mdl-data-table__cell--non-numeric"><?php echo $row["path"]; ?></td>
                     <td class="mdl-data-table__cell--non-numeric"><?php echo $row["state"] == 1 ? '<i class="material-icons">done</i>' : '<i class="material-icons">clear</i>'; ?></td>
                 </tr>
