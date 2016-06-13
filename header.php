@@ -4,6 +4,7 @@ $mode = "";
 
 $userName = $_SESSION["__username__"];
 $isadmin = $_SESSION['__isadmin__'];
+$dialogs = "";
 ?>
 
 <!doctype html>
@@ -36,6 +37,8 @@ $isadmin = $_SESSION['__isadmin__'];
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-pink.min.css" />
         <link rel="stylesheet" href="css/styles.css">
+        <script src="js/dialog-polyfill.js"></script>
+        <link rel="stylesheet" href="css/dialog-polyfill.css">
     </head>
 
     <body>
@@ -68,5 +71,5 @@ $isadmin = $_SESSION['__isadmin__'];
                     <?php } ?>
                 </nav>
             </div>
-            <main class="mdl-layout__content">
+            <main class="mdl-layout__content" style="overflow-y: scroll; ">
                 <div class="page-content">

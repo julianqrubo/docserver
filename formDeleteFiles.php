@@ -7,11 +7,11 @@ if (!isset($_SESSION["__user__"])) {
 include './header.php';
 include './db.php';
 $stmt = $db->prepare("SELECT uf.ID, u.username, c.name companyName, cl.name classifier, uf.size, uf.upload_date
-                        FROM upload_file uf
-                        inner join company c on (uf.companyId = c.ID)
-                        inner join users u on (uf.companyId = u.companyId)
-                        inner join classifier cl on (uf.companyId = cl.companyId and uf.classifierId = cl.ID)
-                        where cl.state = 1 and uf.state = 1 order by c.name asc, uf.upload_date asc, cl.name asc");
+                    FROM upload_file uf
+                    inner join company c on (uf.companyId = c.ID)
+                    inner join users u on (uf.companyId = u.companyId)
+                    left join classifier cl on (uf.companyId = cl.companyId and uf.classifierId = cl.ID)
+                    where cl.state = 1 or uf.state = 1 order by c.name asc, uf.upload_date asc, cl.name asc");
 $stmt->execute();
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $row_cunter = $stmt->rowCount();
@@ -61,7 +61,8 @@ $row_cunter = $stmt->rowCount();
     </table>
     <div style="padding: 10px; text-align: center; color: #444;"><?php echo $row_cunter; ?> registros encontrados</div>
 </div>
-
+<?php
+$dialogs = <<<EOD
 <dialog id="delete-file-dialog" class="mdl-dialog" action="delete_files.php" style="width: 500px;">
     <h3 class="mdl-dialog__title">Eliminar</h3>
     <div class="mdl-dialog__content">
@@ -77,7 +78,8 @@ $row_cunter = $stmt->rowCount();
         <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect ok-button" >Eliminar</button>
     </div>
 </dialog>
-
+EOD;
+        ?>
 <?php
 include './footer.php';
 ?>

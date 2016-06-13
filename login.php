@@ -1,15 +1,9 @@
 <?php
     session_start();
     include './db.php';
-    $username = "";
-    if (isset($_POST["username"])) {
-        $username = $_POST["username"];
-    }
-    $password = "";
-    if (isset($_POST["username"])) {
-        $password = $_POST["password"];
-    }
-    $stmt = $db->prepare("SELECT u.id, u.companyId, u.username, u.pwd, u.isAdmin FROM users u, company c WHERE u.companyId = c.ID and c.state = 1 and username = ? AND pwd = ?");
+    $username = filter_input(INPUT_POST, "username");
+    $password = filter_input(INPUT_POST, "password");;
+    $stmt = $db->prepare("SELECT u.id, u.companyId, u.username, u.pwd, u.isAdmin FROM users u, company c WHERE u.companyId = c.ID and c.state = 1 and BINARY u.username = BINARY ? AND u.pwd = BINARY ?");
     $stmt->execute(array($username, $password));
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($row) {

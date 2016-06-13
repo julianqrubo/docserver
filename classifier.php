@@ -53,7 +53,8 @@ $row_cunter = $stmt->rowCount();
     </table>
     <div style="padding: 10px; text-align: center; color: #444;"><?php echo $row_cunter; ?> registros encontrados</div>
 </div>
-
+<?php
+$dialogs = <<<EOD
 <dialog id="create-classifier-dialog" class="mdl-dialog" action="createClassifier.php" style="width: 500px;">
     <h3 style="text-align: center;">Crear Clasificador</h3>
     <form action="createClassifier.php" id="createClassifier-form">
@@ -89,7 +90,8 @@ $row_cunter = $stmt->rowCount();
         <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect ok-button" >Eliminar</button>
     </div>
 </dialog>
-
+EOD;
+        ?>
 <?php
 include './footer.php';
 ?>

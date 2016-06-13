@@ -64,7 +64,7 @@ function explora_ruta($ruta) {
     while ($recurso = $manejador->read()) {
         if ($ruta == getcwd() . '/fileRepository/' && !($recurso == ".." || $recurso == ".")) {
             $nombre = "$ruta$recurso";
-            $stmt_file2 = $db->prepare("SELECT state FROM company WHERE path = ?;");
+            $stmt_file2 = $db->prepare("SELECT state FROM company WHERE path = BINARY ?;");
             $stmt_file2->execute(array($recurso));
             $row_file2 = $stmt_file2->fetch(PDO::FETCH_ASSOC);
             if ($row_file2["state"] == 1) {
@@ -99,8 +99,7 @@ function explora_ruta($ruta) {
                         $cadena .= "";
                     }
                     if (@is_readable($nombre)) {
-//                        $cadena .= "<a href=\"" . $_SERVER["PHP_SELF"] . "?una-ruta=$nombre$barra\"><img src='images/back.png'/></a>";
-                        $cadena .= "<a href=http://jmsaludocupacionaleu.com/docserver/admfiles.php><img src='images/back.png'/></a>";
+                        $cadena .= "<a href=admfiles.php><img src='images/back.png'/></a>";
                     } else {
                         $cadena .= "$file_aux$barra";
                     }

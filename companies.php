@@ -76,7 +76,8 @@ $row_cunter = $stmt->rowCount();
     </table>
     <div style="padding: 10px; text-align: center; color: #444;"><?php echo $row_cunter; ?> registros encontrados</div>
 </div>
-
+<?php
+$dialogs = <<<EOD
 <dialog id="delete-companies-dialog" class="mdl-dialog" action="delete_companies.php" style="width: 500px;">
     <h3 class="mdl-dialog__title">Eliminar</h3>
     <div class="mdl-dialog__content">
@@ -147,7 +148,8 @@ $row_cunter = $stmt->rowCount();
         </div>
     </form>
 </dialog>
-
+EOD;
+        ?>
 <?php
 include './footer.php';
 ?>

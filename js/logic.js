@@ -39,22 +39,30 @@ $(function () {
     var setup_create_dialog = function (concept, on_ok) {
         var createButton = document.querySelector("#" + "create-" + concept + "-button");
         var dialogCreate = document.querySelector("#" + "create-" + concept + "-dialog");
-        var closeCreateButton = dialogCreate.querySelector('.closeCreate-button');
-        var okCreateButton = dialogCreate.querySelector('.okCreate-button');
-        createButton.addEventListener('click', function () {
-            dialogCreate.showModal();
-        });
-        closeCreateButton.addEventListener('click', function () {
-            dialogCreate.close();
-        });
-        okCreateButton.addEventListener('click', function () {
-            on_ok(dialogCreate.querySelector('form'), dialogCreate.getAttribute("action"));
-        });
+        if (dialogCreate) {
+            if (!dialogCreate.showModal) {
+                dialogPolyfill.registerDialog(dialogCreate);
+            }
+            var closeCreateButton = dialogCreate.querySelector('.closeCreate-button');
+            var okCreateButton = dialogCreate.querySelector('.okCreate-button');
+            createButton.addEventListener('click', function () {
+                dialogCreate.showModal();
+            });
+            closeCreateButton.addEventListener('click', function () {
+                dialogCreate.close();
+            });
+            okCreateButton.addEventListener('click', function () {
+                on_ok(dialogCreate.querySelector('form'), dialogCreate.getAttribute("action"));
+            });
+        }
     };
 
     var setup_delete_dialog = function (concept, on_ok) {
         var deleteButton = document.querySelector("#" + "delete-" + concept + "-button");
         var dialog = document.querySelector("#" + "delete-" + concept + "-dialog");
+        if (!dialog.showModal) {
+            dialogPolyfill.registerDialog(dialog);
+        }
         var closeButton = dialog.querySelector('.close-button');
         var okButton = dialog.querySelector('.ok-button');
         deleteButton.addEventListener('click', function () {
@@ -82,6 +90,9 @@ $(function () {
     var setup_change_dialog = function (concept, on_ok) {
         var changeStatusButton = document.querySelector("#" + "changeStatus-" + concept + "-button");
         var dialogChangeStatus = document.querySelector("#" + "changeStatus-" + concept + "-dialog");
+        if (!dialogChangeStatus.showModal) {
+            dialogPolyfill.registerDialog(dialogChangeStatus);
+        }
         var closeButtonChangeStatus = dialogChangeStatus.querySelector('.closeChangeStatus-button');
         var okButtonChangeStatus = dialogChangeStatus.querySelector('.okChangeStatus-button');
         changeStatusButton.addEventListener('click', function () {
@@ -111,10 +122,8 @@ $(function () {
     $('#sigin').on("click", function (e) {
         var $frm = $("#sigin-form");
         $.post($frm.attr("action"), $frm.serialize(), function (response) {
-            console.log(arguments);
             location.href = location.href.replace("index.php", "") + "files.php";
         }).fail(function (error) {
-            console.log(error);
             var snackbarContainer = document.querySelector('#status-snackbar');
             var data = {
                 message: error.responseText,
@@ -204,7 +213,6 @@ $(function () {
         $.post(action, $(form).serialize(), function (response) {
             location.reload();
         }).fail(function (error) {
-            console.log(error);
             var snackbarContainer = document.querySelector('#status-snackbar');
             var data = {
                 message: error.responseText || error.statusText,
@@ -249,13 +257,14 @@ $(function () {
                     }
                     $autocomplete_div.show();
                 });
+            } else {
+                $autocomplete_div.empty();
             }
         });
     };
 
     setupAutoComplete("#companyId", "/docserver/companiesAutoComplete.php");
     setupAutoComplete("#classifierId", "/docserver/classifierAutoComplete.php", {companyId: "#companyId"});
-
 
     $('#filter_classiferId').on('change', function (e) {
         var $lis = $(e.target).parent().parent().next().children();
@@ -275,7 +284,9 @@ $(function () {
                 }
             }
         }
-        console.log();
     });
 
+    $('#uploadFile').on('click', function (e) {
+        document.querySelector(".mdl-progress").style.display = '';
+    });
 });

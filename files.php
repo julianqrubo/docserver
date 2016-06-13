@@ -7,7 +7,6 @@ if (!isset($_SESSION["__user__"])) {
 include './header.php';
 include './db.php';
 $company = $_SESSION['__company__'];
-//$stmt = $db->prepare("SELECT path FROM company WHERE id = ?");
 $stmt = $db->prepare("SELECT c.path pathc, u.ID, u.classifierId, u.companyId, u.path pathu, u.size, u.source_name, u.state, u.type, u.upload_date, u.user 
                     FROM company c, upload_file u 
                     WHERE c.ID = u.companyId

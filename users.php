@@ -55,7 +55,9 @@ $row_cunter = $stmt->rowCount();
     </table>
     <div style="padding: 10px; text-align: center; color: #444;"><?php echo $row_cunter; ?> registros encontrados</div>
 </div>
+<?php
 
+$dialogs = <<<EOD
 <dialog id="create-users-dialog" class="mdl-dialog" action="createUser.php" style="width: 500px;">
     <h3 style="text-align: center;">Registro de usuario</h3>
     <form action="createUser.php" id="createUser-form">
@@ -98,7 +100,8 @@ $row_cunter = $stmt->rowCount();
         <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect ok-button" >Eliminar</button>
     </div>
 </dialog>
-
+EOD;
+        ?>
 <?php
 include './footer.php';
 ?>

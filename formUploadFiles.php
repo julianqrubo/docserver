@@ -30,8 +30,9 @@ include './header.php';
                     </div>
                     <div style="margin-left: auto; margin-right: auto; margin-top: 5%;">
                         <input type="file" name="fileToUpload[]" id="fileToUpload" multiple="multiple" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
-                        <input type="submit" value="Cargar archivo" name="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+                        <input id="uploadFile" type="submit" value="Cargar archivo" name="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
                     </div>
+                    <div class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="display: none;"></div>
                 </form>
             </div>
         </div>
