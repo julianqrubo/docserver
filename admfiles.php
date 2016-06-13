@@ -48,7 +48,6 @@ if (is_dir($ruta)) {
 function get_fileNameById($uploadId) {
     include './db.php';
     if ($uploadId) {
-        //$stmt_file = $db->prepare("SELECT source_name FROM upload_file WHERE id = " . $uploadId. " and state = 1");
         $stmt_file = $db->prepare("SELECT source_name FROM upload_file WHERE id = ? and state = 1");
         $stmt_file->execute(array($uploadId));
         $row_file = $stmt_file->fetch(PDO::FETCH_ASSOC);
@@ -58,26 +57,32 @@ function get_fileNameById($uploadId) {
 }
 
 function explora_ruta($ruta) {
+    include './db.php';
     $cadena = "";
     $barra = "";
     $manejador = @dir($ruta);
     while ($recurso = $manejador->read()) {
         if ($ruta == getcwd() . '/fileRepository/' && !($recurso == ".." || $recurso == ".")) {
             $nombre = "$ruta$recurso";
-            if (@is_dir($nombre)) {
-                $barra = "/";
-                $cadena .= "";
-            } else {
-                $barra = "";
-                $cadena .= "";
+            $stmt_file2 = $db->prepare("SELECT state FROM company WHERE path = ?;");
+            $stmt_file2->execute(array($recurso));
+            $row_file2 = $stmt_file2->fetch(PDO::FETCH_ASSOC);
+            if ($row_file2["state"] == 1) {
+                if (@is_dir($nombre)) {
+                    $barra = "/";
+                    $cadena .= "";
+                } else {
+                    $barra = "";
+                    $cadena .= "";
+                }
+                if (@is_readable($nombre)) {
+                    $cadena .= "<a href=\"" . $_SERVER["PHP_SELF"] .
+                            "?una-ruta=$nombre$barra\"><img src='images/folder.png'/>$recurso$barra</a>";
+                } else {
+                    $cadena .= "$recurso$barra";
+                }
+                $cadena .= "<br />";
             }
-            if (@is_readable($nombre)) {
-                $cadena .= "<a href=\"" . $_SERVER["PHP_SELF"] .
-                        "?una-ruta=$nombre$barra\"><img src='images/folder.png'/>$recurso$barra</a>";
-            } else {
-                $cadena .= "$recurso$barra";
-            }
-            $cadena .= "<br />";
         }
     }
     if (!($ruta == getcwd() . '/fileRepository/')) {
@@ -94,8 +99,8 @@ function explora_ruta($ruta) {
                         $cadena .= "";
                     }
                     if (@is_readable($nombre)) {
-                        $cadena .= "<a href=\"" . $_SERVER["PHP_SELF"] .
-                                "?una-ruta=$nombre$barra\"><img src='images/back.png'/></a>";
+//                        $cadena .= "<a href=\"" . $_SERVER["PHP_SELF"] . "?una-ruta=$nombre$barra\"><img src='images/back.png'/></a>";
+                        $cadena .= "<a href=http://jmsaludocupacionaleu.com/docserver/admfiles.php><img src='images/back.png'/></a>";
                     } else {
                         $cadena .= "$file_aux$barra";
                     }
@@ -110,7 +115,10 @@ function explora_ruta($ruta) {
                 array_multisort($arrayFile, SORT_DESC, SORT_NUMERIC);
                 foreach ($arrayFile as $ids) {
                     $uploadId = current(explode('.', $ids));
-                    if ($uploadId) {
+                    $stmt_file3 = $db->prepare("SELECT state FROM upload_file WHERE id = ?");
+                    $stmt_file3->execute(array($uploadId));
+                    $row_file3 = $stmt_file3->fetch(PDO::FETCH_ASSOC);
+                    if ($uploadId && $row_file3["state"] == 1) {
                         $labelFile = get_fileNameById($uploadId);
                         $nombre = "$ruta$recurso";
                         if (@is_dir($nombre)) {
@@ -121,7 +129,7 @@ function explora_ruta($ruta) {
                             $cadena .= "";
                         }
                         if (@is_readable($nombre)) {
-                            $cadena .= "<li class = 'mdl-list__item'><span class = 'mdl-list__item-primary-content'><i class = 'material-icons'>attach_file</i><a href =downloadFile.php?path=" . $ruta . $ids . "&filename=" . $labelFile . ">" . $labelFile . "</a></span><a href =downloadFile.php?path=" . $ruta . $ids . "&filename=" . $labelFile . "><i class='material-icons'>cloud_download</i></a></li>";
+                            $cadena .= "<li class = 'mdl-list__item'><span class = 'mdl-list__item-primary-content'><i class = 'material-icons'>attach_file</i><a href =downloadFile.php?path=" . $ruta . "&filename=" . $labelFile . "&fileid=" . $uploadId . ">" . $labelFile . "</a></span><a href =downloadFile.php?path=" . $ruta . "&filename=" . $labelFile . "&fileid=" . $uploadId . "><i class='material-icons'>cloud_download</i></a></li>";
                         } else {
                             $cadena .= "$recurso$barra";
                         }

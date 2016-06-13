@@ -9,7 +9,8 @@ CREATE TABLE `company` (
     `state` int(1) NOT NULL DEFAULT 1,
     PRIMARY KEY (`ID`),
     UNIQUE KEY `idx_company_documentId` (`documentId`),
-    KEY `idx_company_state` (`state`)
+    KEY `idx_company_state` (`state`),
+    UNIQUE KEY `idx_company_path` (`path`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 

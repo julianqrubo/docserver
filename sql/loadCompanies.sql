@@ -92,15 +92,18 @@ INSERT INTO company (documentId, name, address, phone, email, path, state) VALUE
 INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('804011387','VISION EMPRESARIAL','cra 34 # 51-80 piso dos (bucaramanga)','6574806','vision-e-33@hotmail.com','vision_empresarial',1);
 INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('830069989','WEST ARMY SECURITY','cra 27 # 65-08 victoria (bucaramanga)','6476611','wasbucaramanga@gmail.com','west_army_security',1);
 
+INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('800011894','FUNDACION ESTRUCTURAR','carrera 23 a # 22 b - 7 (bucaramanga)','6404926','','fundacion_estructurar',1);
+INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('804012493','COOTRASEPRO','calle 45 # 19-49 piso 3 (bucaramanga)','6700997','cootasepro@hotmail.com','cootasepro',1);
+INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('804016671','CAMPOLLO SA','cll 54 # 28-10 (bucaramanga)','6572206','claudia.rueda@campollo.net','campollo',1);
 
-INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('jmso_94','ACCIONES Y SERVICIOS SA','','','','acciones_y_servicios_sa',1);
-INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('jmso_95','CAFESALUD','','','','cafesalud',1);
-INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('jmso_96','COLEGIO ARCO IRIS','cl. 103 # 19 - 04/06 (bucaramanga)','6316491','arielba@yahoo.es','colegio_arco_iris',1);
-INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('jmso_97','DOGGER GRILL','','','','dogger_grill',1);
-INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('jmso_98','PANADERIA EL MANA CENTRO','','','','panaderia_el_mana_centro',1);
-INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('jmso_99','PROYECTO TV AZTECA','','','','proyecto_tv_azteca',1);
-INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('jmso_100','SOLUCIONES INMEDIATAS','','','','soluciones_inmediatas',1);
-INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('jmso_101','SUMMAR PROCESOS','','','','summar_procesos',1);
-INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('jmso_102','SUMMAR PRODUCTIVIDAD','','','','summar_productividad',1);
-INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('jmso_103','TECNOCONSULTEC','','','','tecnoconsultec',1);
-INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('jmso_104','TECNOFARMA','','','','tecnofarma',1);
+INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('jmso_98','ACCIONES Y SERVICIOS SA','','','','acciones_y_servicios_sa',1);
+INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('jmso_99','CAFESALUD','','','','cafesalud',1);
+INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('jmso_100','COLEGIO ARCO IRIS','cl. 103 # 19 - 04/06 (bucaramanga)','6316491','arielba@yahoo.es','colegio_arco_iris',1);
+INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('jmso_101','DOGGER GRILL','','','','dogger_grill',1);
+INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('jmso_102','PANADERIA EL MANA CENTRO','','','','panaderia_el_mana_centro',1);
+INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('jmso_103','PROYECTO TV AZTECA','','','','proyecto_tv_azteca',1);
+INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('jmso_104','SOLUCIONES INMEDIATAS','','','','soluciones_inmediatas',1);
+INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('jmso_105','SUMMAR PROCESOS','','','','summar_procesos',1);
+INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('jmso_106','SUMMAR PRODUCTIVIDAD','','','','summar_productividad',1);
+INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('jmso_107','TECNOCONSULTEC','','','','tecnoconsultec',1);
+INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('jmso_108','TECNOFARMA','','','','tecnofarma',1);

@@ -36,7 +36,7 @@ $row_cunter = $stmt->rowCount();
                 <th>Usuario</th>
                 <th class="mdl-data-table__cell--non-numeric">Empresa</th>
                 <th class="mdl-data-table__cell--non-numeric">Clasificador</th>
-                <th class="mdl-data-table__cell--non-numeric">Tamaño</th>
+                <th class="mdl-data-table__cell--non-numeric">Tamaño (MB)</th>
                 <th class="mdl-data-table__cell--non-numeric">Fecha de cargue</th>
             </tr>
         </thead>
@@ -53,7 +53,7 @@ $row_cunter = $stmt->rowCount();
                     <td><?php echo $row["username"]; ?></td>
                     <td class="mdl-data-table__cell--non-numeric"><?php echo $row["companyName"]; ?></td>
                     <td class="mdl-data-table__cell--non-numeric"><?php echo $row["classifier"]; ?></td>
-                    <td class="mdl-data-table__cell--non-numeric"><?php echo $row["size"]/1024 . " MB"; ?></td>
+                    <td class="mdl-data-table__cell--non-numeric"><?php echo $row["size"]/1024000; ?></td>
                     <td class="mdl-data-table__cell--non-numeric"><?php echo $row["upload_date"]; ?></td>
                 </tr>
             <?php } ?>
