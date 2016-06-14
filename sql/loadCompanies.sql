@@ -1,7 +1,7 @@
 INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('800218654','AGROMUNDO','cra 31 51-74 ofi 901 (bucaramanga)','6436070','patriciagarcia@agromundoltda.com','agromundo',1);
 INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('804004906','AGROSOL','cra 31 # 51-74 ofc. 101 torre mardel (bucaramanga)','6436070','','agrosol',1);
 INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('1388199','ALFONSO CASTELLANOS','cra 29 36 - 12','','','alfonso_castellanos',1);
-INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('9001331144','ALIADOS ESTRATEGICOS LTDA','CLL 51 #35-28 INT 100 OFIC 218','','','ALIADOS_ESTRATEGICOS_LTDA',1);
+INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('9001331144','ALIADOS ESTRATEGICOS LTDA','CLL 51 #35-28 INT 100 OFIC 218','','','aliados_estrategicos_ltda',1);
 INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('830514769','ALMOMENTO SA','aven el dorado # 100-80 piso 2 (bogota)','4135020','contratacion@almomento.com.co','almomento_sa',1);
 INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('804016472','AMERICANA DE SERVICIOS LTDA','calle 104 # 19-21 provenza (bucaramanga)','6367434','mejoraseo@hotmail.com','americana_de_servicios_ltda',1);
 INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('804001168','APOYO TEMPORAL RECURSO HUMANO','CRA 34 #52-78 CAMARA COMERCIO','','','apoyo_temporal_recurso_humano',1);
