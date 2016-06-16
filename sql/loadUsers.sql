@@ -84,11 +84,11 @@ INSERT INTO users (companyId, username, pwd, isAdmin)VALUES (84,'800011894','Use
 INSERT INTO users (companyId, username, pwd, isAdmin)VALUES (85,'804012493','User85$',2);
 INSERT INTO users (companyId, username, pwd, isAdmin)VALUES (86,'804016671','User86$',2);
 
-INSERT INTO users (companyId, username, pwd, isAdmin)VALUES (87,'jmso_89','User89$',2);
-INSERT INTO users (companyId, username, pwd, isAdmin)VALUES (88,'jmso_90','User90$',2);
-INSERT INTO users (companyId, username, pwd, isAdmin)VALUES (89,'jmso_91','User91$',2);
-INSERT INTO users (companyId, username, pwd, isAdmin)VALUES (90,'jmso_92','User92$',2);
-INSERT INTO users (companyId, username, pwd, isAdmin)VALUES (91,'jmso_93','User93$',2);
-INSERT INTO users (companyId, username, pwd, isAdmin)VALUES (92,'jmso_94','User94$',2);
-INSERT INTO users (companyId, username, pwd, isAdmin)VALUES (93,'jmso_95','User95$',2);
-INSERT INTO users (companyId, username, pwd, isAdmin)VALUES (94,'jmso_96','User96$',2);
+INSERT INTO users (companyId, username, pwd, isAdmin)VALUES (87,'jmso_87','User87$',2);
+INSERT INTO users (companyId, username, pwd, isAdmin)VALUES (88,'jmso_88','User88$',2);
+INSERT INTO users (companyId, username, pwd, isAdmin)VALUES (89,'jmso_89','User89$',2);
+INSERT INTO users (companyId, username, pwd, isAdmin)VALUES (90,'jmso_90','User90$',2);
+INSERT INTO users (companyId, username, pwd, isAdmin)VALUES (91,'jmso_91','User91$',2);
+INSERT INTO users (companyId, username, pwd, isAdmin)VALUES (92,'jmso_92','User92$',2);
+INSERT INTO users (companyId, username, pwd, isAdmin)VALUES (93,'jmso_93','User93$',2);
+INSERT INTO users (companyId, username, pwd, isAdmin)VALUES (94,'jmso_94','User94$',2);
