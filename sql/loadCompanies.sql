@@ -68,7 +68,7 @@ INSERT INTO company (documentId, name, address, phone, email, path, state) VALUE
 INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('900152771','REHABILIDEMOS','cra 36 # 48 - 108 (bucaramanga)','6578005','','rehabilidemos',1);
 INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('9008822016','RM TRANSLOGISTICA','','','','rm_translogistica',1);
 INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('830029102','SALUD OCUPACIONAL DE LOS ANDES','','','','salud_ocupacional_de_los_andes',1);
-INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('890312749','SEGURIDAD ATLAS','CRA 19 #28-29','6333636','','SEGURIDAD_ATLAS',1);
+INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('890312749','SEGURIDAD ATLAS','CRA 19 #28-29','6333636','','seguridad_atlas',1);
 INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('899999034','SENA','km 2 via palogordo vereda guatiguara (pidecuesta)','6561807','','sena',1);
 INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('890323239','SUMMAR TEMPORALES','cali calle 17 norte # 4n-25 -bucaramanga calle 47# 29-33 oficina 604 ','6856700','','summar_temporales',1);
 INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('830063683','TECNISEG','','','','tecniseg',1);
