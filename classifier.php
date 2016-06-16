@@ -64,7 +64,7 @@ $dialogs = <<<EOD
             <label class="mdl-textfield__label" for="companyId"><b>Empresa*</b></label>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%">
-            <input class="mdl-textfield__input" type="text" id="name" name="name" pattern="[a-z\d_]*$" maxlength="100">
+            <input class="mdl-textfield__input" type="text" id="name" name="name" pattern="[a-zñ\d_]*$" maxlength="100">
             <label class="mdl-textfield__label" for="name"><b>Nombre*</b></label>
             <span class="mdl-textfield__error">Solo letras minúsculas, espacios, entre 4 y 100 caracteres</span>
         </div>

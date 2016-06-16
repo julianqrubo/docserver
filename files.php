@@ -48,7 +48,7 @@ foreach ($rows_cbox as $id) {
                 <i class = "material-icons">attach_file</i>
                 <a href = "downloadFile.php?path=<?php echo $path?>&filename=<?php echo $row['source_name']; ?>&fileid=<?php echo $row['ID']; ?>" id = "download_text"><?php echo $row['source_name']; ?></a>
             </span>
-            <a href="downloadFile.php?path=<?php echo $path . "/" . $row['ID']; ?>&filename=<?php echo $row['source_name']; ?>&fileid=<?php echo $row['ID']; ?>" id="download_icon"><i class="material-icons">cloud_download</i></a>
+            <a href = "downloadFile.php?path=<?php echo $path?>&filename=<?php echo $row['source_name']; ?>&fileid=<?php echo $row['ID']; ?>" id="download_icon"><i class="material-icons">cloud_download</i></a>
         </li>
         <?php
     }

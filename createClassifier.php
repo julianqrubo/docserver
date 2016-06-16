@@ -20,7 +20,7 @@ if (empty($classifier)) {
     $classifier = trim($classifier);
 }
 
-$vClassifier = validateConntentField("/^[a-z\d_]*$/", $classifier);
+$vClassifier = validateConntentField("/^[a-zñ\d_]*$/", $classifier);
 
 try {
     if($vClassifier) {
