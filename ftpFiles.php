@@ -95,7 +95,7 @@ function explora_ruta($ruta, $path_base, $path, $path_app) {
             } else {//ES UN ARCHIVO
                 //No agregamos barra
                 $barra = "";
-                $cadena .= "<a href=download.php?path=" . $ruta . "&filename=" . $recurso . "><img src='images/file.jpg'/>$recurso$barra</a>";
+                $cadena .= "<a href=downloadFTP.php?path=" . $ruta . "&filename=" . $recurso . "><img src='images/file.jpg'/>$recurso$barra</a>";
             }
             $cadena .= "<br />";
         }
