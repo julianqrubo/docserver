@@ -62,12 +62,14 @@ $dialogs = "";
                     <?php if ($isadmin == 1) { ?>
                         <a class="mdl-navigation__link" href="companies.php">Empresas</a>
                         <a class="mdl-navigation__link" href="users.php">Usuarios</a>
-                        <a class="mdl-navigation__link" href="classifier.php">Clasificadores</a>
-                        <a class="mdl-navigation__link" href="formUploadFiles.php">Cargue de archivos</a>
-                        <a class="mdl-navigation__link" href="formDeleteFiles.php">Eliminación de Archivos</a>
-                        <a class="mdl-navigation__link" href="admfiles.php">Explorador de Archivos</a>
+                        <!--<a class="mdl-navigation__link" href="classifier.php">Clasificadores</a>-->
+                        <!--<a class="mdl-navigation__link" href="formUploadFiles.php">Cargue de archivos</a>-->
+                        <!--<a class="mdl-navigation__link" href="formDeleteFiles.php">Eliminación de Archivos</a>-->
+                        <!--<a class="mdl-navigation__link" href="admfiles.php">Explorador de Archivos</a>-->
+                        <a class="mdl-navigation__link" href="ftpFiles.php">Archivos</a>
                     <?php } else { ?>
-                        <a class="mdl-navigation__link" href="files.php">Archivos</a>
+                        <!--<a class="mdl-navigation__link" href="files.php">Archivos</a>-->
+                        <a class="mdl-navigation__link" href="ftpFiles.php">Archivos</a>
                     <?php } ?>
                 </nav>
             </div>
