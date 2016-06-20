@@ -1,0 +1,41 @@
+[11-Jun-2016 17:31:24 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'docserver.company' doesn't exist' in /home/jmsaludadmin/public_html/docserver/classifier.php:10
+Stack trace:
+#0 /home/jmsaludadmin/public_html/docserver/classifier.php(10): PDOStatement->execute()
+#1 {main}
+  thrown in /home/jmsaludadmin/public_html/docserver/classifier.php on line 10
+[11-Jun-2016 17:32:05 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'docserver.company' doesn't exist' in /home/jmsaludadmin/public_html/docserver/classifier.php:10
+Stack trace:
+#0 /home/jmsaludadmin/public_html/docserver/classifier.php(10): PDOStatement->execute()
+#1 {main}
+  thrown in /home/jmsaludadmin/public_html/docserver/classifier.php on line 10
+[11-Jun-2016 17:32:07 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'docserver.users' doesn't exist' in /home/jmsaludadmin/public_html/docserver/users.php:10
+Stack trace:
+#0 /home/jmsaludadmin/public_html/docserver/users.php(10): PDOStatement->execute()
+#1 {main}
+  thrown in /home/jmsaludadmin/public_html/docserver/users.php on line 10
+[11-Jun-2016 17:32:08 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'docserver.company' doesn't exist' in /home/jmsaludadmin/public_html/docserver/companies.php:10
+Stack trace:
+#0 /home/jmsaludadmin/public_html/docserver/companies.php(10): PDOStatement->execute()
+#1 {main}
+  thrown in /home/jmsaludadmin/public_html/docserver/companies.php on line 10
+[11-Jun-2016 17:32:09 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'docserver.company' doesn't exist' in /home/jmsaludadmin/public_html/docserver/files.php:11
+Stack trace:
+#0 /home/jmsaludadmin/public_html/docserver/files.php(11): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/jmsaludadmin/public_html/docserver/files.php on line 11
+[11-Jun-2016 17:32:17 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'docserver.users' doesn't exist' in /home/jmsaludadmin/public_html/docserver/login.php:13
+Stack trace:
+#0 /home/jmsaludadmin/public_html/docserver/login.php(13): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/jmsaludadmin/public_html/docserver/login.php on line 13
+[11-Jun-2016 17:32:17 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'docserver.company' doesn't exist' in /home/jmsaludadmin/public_html/docserver/files.php:11
+Stack trace:
+#0 /home/jmsaludadmin/public_html/docserver/files.php(11): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/jmsaludadmin/public_html/docserver/files.php on line 11
+[12-Jun-2016 16:43:23 UTC] PHP Fatal error:  Call to a member function prepare() on a non-object in /home/jmsaludadmin/public_html/docserver/admfiles.php on line 66
+[12-Jun-2016 16:44:32 UTC] PHP Fatal error:  Call to a member function prepare() on a non-object in /home/jmsaludadmin/public_html/docserver/admfiles.php on line 66
+[12-Jun-2016 16:44:47 UTC] PHP Fatal error:  Call to a member function prepare() on a non-object in /home/jmsaludadmin/public_html/docserver/admfiles.php on line 117
+[12-Jun-2016 16:44:51 UTC] PHP Fatal error:  Call to a member function prepare() on a non-object in /home/jmsaludadmin/public_html/docserver/admfiles.php on line 66
+[12-Jun-2016 16:44:56 UTC] PHP Fatal error:  Call to a member function prepare() on a non-object in /home/jmsaludadmin/public_html/docserver/admfiles.php on line 66
+[12-Jun-2016 16:47:42 UTC] PHP Fatal error:  Call to a member function prepare() on a non-object in /home/jmsaludadmin/public_html/docserver/admfiles.php on line 67

@@ -7,8 +7,6 @@ if (!isset($_SESSION["__user__"])) {
 }
 $path_file_srv = $_GET['path'];
 $filename = $_GET['filename'];
-//echo $path_file_srv."<br/>";
-//echo $filename."<br/>";
 
 $file = $path_file_srv;
 $filename = $filename;
