@@ -31,7 +31,7 @@ $path_app = '/docserver';
             .group		{overflow:hidden;padding:2px;}
             section .group:nth-child(odd) {background:#e5e5e5;}
             .directory	{font-weight:bold;}
-            .name		{float:left;width:250px;overflow:hidden;}
+            .name		{float:left;width:700px;overflow:hidden;}
             .mime		{float:left;margin-left:10px;}
             .size		{float:right;}
             .bold		{font-weight:bold;}
@@ -41,7 +41,7 @@ $path_app = '/docserver';
 
     <body>
         <h3 style="text-align: center;">Explorador de archivos</h3>
-        <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: auto; margin-right: auto; margin-top: 5%; margin-bottom: 5%; width: 600px;">
+        <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: auto; margin-right: auto; margin-top: 5%; margin-bottom: 5%; width: 700px;">
             <span class = "mdl-list__item-primary-content" style="margin-left: 5%; margin-right: 5%; margin-top: 5%; margin-bottom: 5%">
                 <?php
 // obtenemos la ruta a revisar, y la ruta anterior para volver...
