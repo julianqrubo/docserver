@@ -67,7 +67,7 @@ INSERT INTO company (documentId, name, address, phone, email, path, state) VALUE
 INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('860527350','PTA SAS','carrera 34 # 52-80 (bucaramanga)','6576128','bucaramanga@pta.com.co','pta_sas',1);
 INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('900152771','REHABILIDEMOS','cra 36 # 48 - 108 (bucaramanga)','6578005','','rehabilidemos',1);
 INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('9008822016','RM TRANSLOGISTICA','','','','rm_translogistica',1);
-INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('830029102','SALUD OCUPACIONAL DE LOS ANDES','','','','salud_ocupacional_de_los_andes',1);
+INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('830029102','SALUD OCUPACIONAL DE LOS ANDES','','','','soandes',1);
 INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('890312749','SEGURIDAD ATLAS','CRA 19 #28-29','6333636','','seguridad_atlas',1);
 INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('899999034','SENA','km 2 via palogordo vereda guatiguara (pidecuesta)','6561807','','sena',1);
 INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('890323239','SUMMAR TEMPORALES','cali calle 17 norte # 4n-25 -bucaramanga calle 47# 29-33 oficina 604 ','6856700','','summar_temporales',1);
@@ -80,16 +80,9 @@ INSERT INTO company (documentId, name, address, phone, email, path, state) VALUE
 INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('900650095','VIHONCO IPS','cll 54 # 31 -30 (bucaramanga)','6973868','farmacia.bucaramanga@vihonco.com','vihonco_ips',1);
 INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('804011387','VISION EMPRESARIAL','cra 34 # 51-80 piso dos (bucaramanga)','6574806','vision-e-33@hotmail.com','vision_empresarial',1);
 INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('830069989','WEST ARMY SECURITY','cra 27 # 65-08 victoria (bucaramanga)','6476611','wasbucaramanga@gmail.com','west_army_security',1);
-
 INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('800011894','FUNDACION ESTRUCTURAR','carrera 23 a # 22 b - 7 (bucaramanga)','6404926','','fundacion_estructurar',1);
 INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('804012493','COOTRASEPRO','calle 45 # 19-49 piso 3 (bucaramanga)','6700997','cootasepro@hotmail.com','cootasepro',1);
 INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('804016671','CAMPOLLO SA','cll 54 # 28-10 (bucaramanga)','6572206','claudia.rueda@campollo.net','campollo',1);
-
-INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('jmso_87','COLEGIO ARCO IRIS','cl. 103 # 19 - 04/06 (bucaramanga)','6316491','arielba@yahoo.es','colegio_arco_iris',1);
+INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('800125313','SUMMAR PROCESOS','','','','summar_procesos',1);
 INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('jmso_88','DOGGER GRILL','','','','dogger_grill',1);
 INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('jmso_89','PANADERIA EL MANA CENTRO','','','','panaderia_el_mana_centro',1);
-INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('jmso_90','PROYECTO TV AZTECA','','','','proyecto_tv_azteca',1);
-INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('jmso_91','SOLUCIONES INMEDIATAS','','','','soluciones_inmediatas',1);
-INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('jmso_92','SUMMAR PROCESOS','','','','summar_procesos',1);
-INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('jmso_93','SUMMAR PRODUCTIVIDAD','','','','summar_productividad',1);
-INSERT INTO company (documentId, name, address, phone, email, path, state) VALUES ('jmso_94','TECNOCONSULTEC','','','','tecnoconsultec',1);

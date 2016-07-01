@@ -44,7 +44,7 @@ $path_app = '/docserver';
         <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: auto; margin-right: auto; margin-top: 5%; margin-bottom: 5%; width: 700px;">
             <span class = "mdl-list__item-primary-content" style="margin-left: 5%; margin-right: 5%; margin-top: 5%; margin-bottom: 5%">
                 <?php
-// obtenemos la ruta a revisar, y la ruta anterior para volver...
+                // obtenemos la ruta a revisar, y la ruta anterior para volver...
                 if ($_GET["path"]) {
                     $path = $_GET["path"];
                     $back = implode("/", explode("/", $_GET["path"], -2));
@@ -61,9 +61,7 @@ $path_app = '/docserver';
                     // si no estamos en la raiz, permitimos volver hacia atras
                     if ($path != $path_base . $path_company . "/*")
                         echo "<div class='bold group'><a href='?path=" . $back . "'><img src='images/back.png'/></a></div>";
-                    // devuelve el tipo mime de su extensión (desde PHP 5.3)
                     $finfo1 = finfo_open(FILEINFO_MIME_TYPE);
-                    // devuelve la codificación mime del fichero (desde PHP 5.3)
                     $finfo2 = finfo_open(FILEINFO_MIME_ENCODING);
                     $folder = 0;
                     $file = 0;
