@@ -4,7 +4,7 @@
     margin-right: auto;
 }
 
-.mdl-list__item:hover{
+.mdl-list__item:hover{ 
     background-color: #aaa;
     color: #424242!important;
 }

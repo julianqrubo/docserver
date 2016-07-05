@@ -11,7 +11,7 @@
         $_SESSION['__username__'] =  $row["username"];
         $_SESSION['__isadmin__'] =  $row["isAdmin"];
         $_SESSION['__company__'] =  $row["companyId"];
-        echo $row["id"]." -- ".$row["name"]."----".$_SESSION['__user__'];
+        echo $row["id"]." -- ".$row["username"]."----".$_SESSION['__user__'];
     } else {
         http_response_code(401);
         echo "Credenciales incorrectas o usuario inactivo";
