@@ -122,7 +122,7 @@ $(function () {
     $('#sigin').on("click", function (e) {
         var $frm = $("#sigin-form");
         $.post($frm.attr("action"), $frm.serialize(), function (response) {
-            location.href = location.href.replace("index.php", "") + "ftpFiles.php";
+            location.href = location.href.replace("index.php", "") + "ftpFilesPages.php";
         }).fail(function (error) {
             var snackbarContainer = document.querySelector('#status-snackbar');
             var data = {

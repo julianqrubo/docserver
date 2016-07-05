@@ -1,10 +1,10 @@
 <?php
-
 session_start();
 if (!isset($_SESSION["__user__"])) {
     header('Location: index.php');
     exit;
 }
+
 include './header.php';
 include './db.php';
 
@@ -20,12 +20,7 @@ foreach ($rows as $row) {
 $path_base = 'ftpRepository/';
 $path_app = '/docserver';
 
-$finfo1 = finfo_open(FILEINFO_MIME_TYPE);
-$finfo2 = finfo_open(FILEINFO_MIME_ENCODING);
-$folder = 0;
-$file = 0;
-# recorremos todos los archivos de la carpeta
-
+// Variable para guardar la información para mostrar de cada archivo
 $files_array = array();
 
 // obtenemos la ruta a revisar, y la ruta anterior para volver...
@@ -39,6 +34,14 @@ if ($_GET["path"]) {
 }else {
     $path = $path_base . $path_company . "/*";
 }
+
+// si no estamos en la raiz, permitimos volver hacia atras
+if ($path != $path_base . $path_company . "/*")
+    echo "<div class='bold group'><a href='?path=" . $back . "'><img src='images/back.png'/></a></div>";
+$finfo1 = finfo_open(FILEINFO_MIME_TYPE);
+$finfo2 = finfo_open(FILEINFO_MIME_ENCODING);
+$folder = 0;
+$file = 0;
 
 foreach (glob($path) as $filename) {
     $recurso = end(explode("/", $filename));
@@ -56,40 +59,76 @@ foreach (glob($path) as $filename) {
 }
 
 //echo json_encode($files_array);
+//Cantidad de resultados por página (debe ser INT, no string/varchar)
+$cantidad_resultados_por_pagina = 10;
+$pagina = $_GET ['pagina'];
+//echo "la pag es::::::: " . $pagina . "<br>";
 
-$conta_rows = sizeof($files_array);
-
-//Limito la busqueda
-$TAMANO_PAGINA = 30;
-
-$pagina = $_GET["offset"];
-
-if (!$pagina) {
-    $inicio = 0;
-    $pagina = 1;
-} else {
-    $inicio = ($pagina - 1) * $TAMANO_PAGINA;
-}
-
-//calculo el total de páginas
-$total_paginas = ceil($num_total_registros / $TAMANO_PAGINA);
-
-if ($total_paginas > 1) {
-    if ($pagina != 1){
-        
-    }
-    for ($j = 0; $j < $total_paginas; $i++) {
-        if ($pagina == $j){
-            echo $pagina;
-        }else{
-            echo '<a href="downloadFile.php?offset=" . $j . ">' . $j . '</a>  ';
+if (isset($pagina)) {
+    if (is_string($pagina)) {
+        if (is_numeric($pagina)) {
+            if ($pagina == 1) {
+                header('Location: ftpFilesPages.php');
+            } else {
+                $pagina = $pagina;
+            }
+        } else {
+            $pagina = 1;
         }
     }
-    if ($pagina != $total_paginas){
-        
-    }
+} else {
+    $pagina = 1;
 }
-
-finfo_close($finfo1);
-finfo_close($finfo2);
+echo "la pag es::::::: " . $pagina . "<br>";
+$empezar_desde = ($pagina - 1) * $cantidad_resultados_por_pagina;
+?>
+<body>
+    <?php
+    $total_registros = sizeof($files_array);
+    $total_paginas = ceil($total_registros / $cantidad_resultados_por_pagina);
+    $num_row = $cantidad_resultados_por_pagina + $empezar_desde;
+    if ($num_row > $total_registros) {
+        $num_row = $total_registros;
+    }
+    for ($i = $empezar_desde; $i < $num_row; $i++) {
+        ?>
+        <span>
+            <?php
+            if ($files_array[$i]) {
+                echo json_encode($files_array[$i]) . "<br>";
+            }
+            ?>
+        </span>
+    <?php } ?>
+    <hr>
+    <?php
+    echo "<center><p>";
+    if ($total_registros > $cantidad_resultados_por_pagina) {
+        if (($pagina - 1) > 0) {
+            echo "<span><a href='ftpFilesPages.php?pagina=" . ($pagina - 1) . "'>&laquo; Anterior</a></span> ";
+        }
+        // Numero de paginas a mostrar
+        $num_paginas = 10;
+        $pagina_hasta = $pagina + $num_paginas;
+        if ($pagina_hasta > $total_paginas) {
+            $pagina_hasta = $total_paginas;
+        }
+        for ($k = $pagina; $k < $pagina_hasta; $k++) {
+            if ($pagina == $k) {
+                echo "<span>" . $pagina . "</span> ";
+            } else {
+                echo "<span><a href='ftpFilesPages.php?pagina=" . $k . "'>" . $k . "</a></span> ";
+            }
+        }
+        if (($pagina + 1) <= $total_paginas) {
+            echo "<span><a href='ftpFilesPages.php?pagina=" . ($pagina + 1) . "'>Siguiente &raquo;</a></span>";
+        }
+    }
+    echo "</p></center>";
+    ?>
+</body>
+<?php
+//finfo_close($finfo1);
+//finfo_close($finfo2);
+include './footer.php';
 ?>
