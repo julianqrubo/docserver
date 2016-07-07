@@ -289,4 +289,42 @@ $(function () {
     $('#uploadFile').on('click', function (e) {
         document.querySelector(".mdl-progress").style.display = '';
     });
+
+    var load_next_page = function (flist) {
+        var page = $.data($flist, 'page');
+        if (page === undefined) {
+            page = 0;
+        } else {
+            page++;
+        }
+        $('#load-more-files').hide();
+        $('#loading-more-files').show();
+        $.post("/docserver/files_pager.php", {"page": page, "path": path}, function (response) {
+            var filesJson = $.parseJSON(response);
+            var metadata = filesJson[0];
+            for (var i = 1; i < filesJson.length; i++) {
+                if( filesJson[i].folder){
+                    $('<li class="mdl-list__item" style="text-align: left;"><a href="?path='+(path? path+"/":"" )+ filesJson[i].dir+'" style="height: 30px; line-height: 30px; display: block; width: 100%;"><i class="material-icons" style="vertical-align: middle; display: inline-block;">folder_open</i><span class="mdl-list__item-primary-content" style="vertical-align: middle; display: inline-block;">' + (i + (1 * metadata.start)) + " - " + filesJson[i].name + '</span></a></li>').appendTo($flist);
+                }else{
+                    $('<li class="mdl-list__item" style="text-align: left;"><a href="downloadFTP.php?path='+ filesJson[i].path+'&filename='+filesJson[i].name+'" style="height: 30px; line-height: 30px; display: block; width: 100%;"><i class="material-icons" style="vertical-align: middle; display: inline-block;">file_download</i><span class="mdl-list__item-primary-content" style="vertical-align: middle; display: inline-block;">' + (i + (1 * metadata.start)) + " - " + filesJson[i].name + '</span></a></li>').appendTo($flist);
+                }
+                
+            }
+            $.data(flist, "page", page);
+            $('#loading-more-files').hide();
+            if( metadata.end < metadata.total ){
+                $('#load-more-files').show();
+            }
+        });
+    };
+
+    var $flist = $('#files-list');
+    if ($flist.length) {
+        var page = $.data($flist, 'page') || 0;
+        load_next_page($flist, page);
+        $('#load-more-files').on("click", function () {
+            load_next_page($flist);
+        });
+    }
+
 });
