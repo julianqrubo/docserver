@@ -66,15 +66,21 @@ if (isset($pagina)) {
 }
 echo "la pag es::::::: " . $pagina . "<br>";
 $conta_archivo = ($pagina - 1) * $cantidad_resultados_por_pagina;
+$conta_archivo_aux = ($pagina - 1) * $cantidad_resultados_por_pagina;
 echo "conta_archivo:::::: " . $conta_archivo . "<br>";
 echo "el path es:::::::: " . $path . "<br>";
 echo getcwd() . "<br>";
 
 //var/www/html/docserver/ftpRepository/jmsaludocupacional/*
-foreach (glob(getcwd() ."/".$path) as $filename) {
-    $recurso = end(explode("/", $filename));
-    echo $recurso . "<br>";
+foreach (glob(getcwd() . "/" . $path) as $filename) {
+//    echo $filename . "<br>";
+    if ($conta_archivo_aux < ($conta_archivo + $cantidad_resultados_por_pagina)) {
+        $recurso = end(explode("/", $filename));
+        echo $conta_archivo_aux . "------" . $recurso . "<br>";
+    }
+    $conta_archivo_aux += 1;
 }
+
 
 
 /* while ($conta_archivo < ($conta_archivo + $cantidad_resultados_por_pagina)) {
@@ -82,7 +88,6 @@ foreach (glob(getcwd() ."/".$path) as $filename) {
   foreach (glob($path) as $filename) {
   $recurso = end(explode("/", $filename));
   $fileMime = finfo_file($finfo1, $filename);
-  $fileEncoding = finfo_file($finfo2, $filename);
   if ($fileMime == "directory") {
   $folder+=1;
   // mostramos la carpeta y permitimos pulsar sobre la misma
@@ -148,9 +153,6 @@ foreach (glob(getcwd() ."/".$path) as $filename) {
   <?php
   //finfo_close($finfo1);
   //finfo_close($finfo2); */
-
-
-
 
 
 include './footer.php';

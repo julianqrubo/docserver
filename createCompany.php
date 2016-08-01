@@ -8,6 +8,8 @@ function validateConntentField($regex, $valor) {
     return preg_match($regex, $valor);
 }
 
+$ruta = getcwd() . '/ftpRepository/';
+
 $stmt_getCompanyId = $db->prepare("SELECT AUTO_INCREMENT nextId FROM information_schema.TABLES WHERE TABLE_NAME = 'company';");
 $stmt_getCompanyId->execute();
 $row_getCompanyId = $stmt_getCompanyId->fetch(PDO::FETCH_ASSOC);
@@ -20,15 +22,15 @@ $email = NULL;
 $path = filter_input(INPUT_POST, "path");
 
 if (empty($documentId)) {
-    $documentId = "jmso_".$row_getCompanyId["nextId"];
+    $documentId = "jmso_" . $row_getCompanyId["nextId"];
     $vDocumentId = TRUE;
-}else{
+} else {
     $documentId = trim($documentId);
     $vDocumentId = validateConntentField("/^\d*$/", $documentId);
 }
 if (empty($name)) {
     $name = NULL;
-}else{
+} else {
     $name = trim($name);
 }
 if (isset($_POST["address"])) {
@@ -64,6 +66,11 @@ try {
         $stmt = $db->prepare("INSERT INTO company (documentId,name,address,phone,email,path,state) VALUES (?, ?, ?, ?, ?, ?, ?);");
         $stmt->execute(array($documentId, strtoupper($name), $address, $phone, $email, trim($path), 1));
         $row = $stmt->rowCount();
+
+        $ruta = $ruta . $path;
+        if (!file_exists($ruta)) {
+            mkdir($ruta);
+        }
     }
 } catch (Exception $ex) {
     http_response_code(500);
