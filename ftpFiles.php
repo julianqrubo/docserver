@@ -54,11 +54,6 @@ $path = filter_input(INPUT_GET, "path");
     var path = "<?php echo $path; ?>";
 </script>
 
-
-    <script type="text/javascript">
-        var path = "<?php echo $path; ?>";
-    </script>
-
-    <?php
-    include './footer.php';
-    ?>
+<?php
+include './footer.php';
+?>
